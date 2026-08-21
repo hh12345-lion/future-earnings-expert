@@ -5,7 +5,7 @@ export const siteConfig = {
   shortName: "FutureEarningsExpert",
   domain: SITE_URL,
   email: "contact@futureearningsexpert.com",
-  tagline: "Defensible economic damages for UK litigation.",
+  tagline: "Court-ready forensic economics for solicitors across the United Kingdom.",
   description:
     "Future Earnings Expert connects UK litigation solicitors and counsel with qualified forensic economists specialising in future earnings, earning capacity, and economic damages expert witness services across England, Wales, Scotland, and Northern Ireland.",
   responseTime: "1 business day",

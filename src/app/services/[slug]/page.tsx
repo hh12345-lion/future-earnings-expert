@@ -62,12 +62,12 @@ export default async function ServicePage({ params }: Props) {
         <p className="mt-8">
           <Link
             href={`/earnings-damages-types/${service.relatedTypeSlug}`}
-            className="font-semibold text-navy hover:text-gold"
+            className="font-semibold text-forest hover:text-copper"
           >
             Related earnings damages type →
           </Link>
           {" · "}
-          <Link href="/how-future-earnings-are-calculated" className="font-semibold text-navy hover:text-gold">
+          <Link href="/how-future-earnings-are-calculated" className="font-semibold text-forest hover:text-copper">
             How earnings are calculated →
           </Link>
         </p>

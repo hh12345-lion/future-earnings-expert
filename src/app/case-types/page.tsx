@@ -5,7 +5,7 @@ import { caseTypes } from "@/lib/content/case-types";
 export const metadata = {
   title: "Case Types Requiring a Future Earnings Expert Witness",
   description:
-    "Which US cases need a forensic economist? Personal injury, wrongful death, employment, malpractice, workers comp crossover, and federal Daubert proceedings.",
+    "Which UK cases need a forensic economist? Personal injury, fatal accident, employment, clinical negligence, employers' liability crossover, and CPR Part 35 proceedings.",
 };
 
 export default function CaseTypesHub() {
@@ -22,10 +22,10 @@ export default function CaseTypesHub() {
             <Link
               key={p.slug}
               href={`/case-types/${p.slug}`}
-              className="rounded-lg border border-border p-6 shadow-sm hover:border-gold hover:shadow-md"
+              className="rounded-lg border border-stone/70 p-6 shadow-sm hover:border-copper hover:shadow-md"
             >
-              <h2 className="text-xl font-semibold text-navy">{p.h1}</h2>
-              <p className="mt-2 text-sm text-body">{p.metaDescription}</p>
+              <h2 className="text-xl font-semibold text-forest">{p.h1}</h2>
+              <p className="mt-2 text-sm text-muted">{p.metaDescription}</p>
             </Link>
           ))}
         </div>

@@ -6,9 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 
 const PHONE_COUNTRY_CODES = [
   { label: "UK +44", value: "+44" },
-  { label: "US +1", value: "+1" },
-  { label: "CA +1", value: "+1" },
-  { label: "AU +61", value: "+61" },
+  { label: "IE +353", value: "+353" },
   { label: "Other", value: "" },
 ] as const;
 
@@ -64,7 +62,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       {status === "error" && (
-        <p className="rounded border border-red-200 bg-red-50 p-3 text-sm text-red-800">
+        <p className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800">
           Submission failed. Please email{" "}
           <a href={`mailto:${siteConfig.email}`} className="font-semibold underline">
             {siteConfig.email}
@@ -74,16 +72,16 @@ export function ContactForm() {
       )}
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Full name" name="name" required autoComplete="name" />
-        <Field label="Law firm / organisation" name="organisation" required autoComplete="organization" />
+        <Field label="Firm / organisation" name="organisation" required autoComplete="organization" />
         <Field label="Email" name="email" type="email" required autoComplete="email" className="sm:col-span-2" />
         <div className="sm:col-span-2">
-          <span className="mb-1 block text-sm font-medium text-navy">Phone</span>
+          <span className="mb-1 block text-sm font-medium text-forest">Telephone</span>
           <div className="flex flex-col gap-2 sm:flex-row">
             <select
-              aria-label="Phone country code"
+              aria-label="Telephone country code"
               value={phoneCountry}
               onChange={(e) => setPhoneCountry(e.target.value)}
-              className="min-h-[44px] w-full rounded border border-border px-3 py-2 text-body focus:border-navy focus:outline-none focus:ring-1 focus:ring-navy sm:max-w-[8.5rem]"
+              className="min-h-[44px] w-full rounded-lg border border-stone/70 px-3 py-2 text-muted focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest sm:max-w-[8.5rem]"
             >
               {PHONE_COUNTRY_CODES.map((c) => (
                 <option key={c.label} value={c.value}>
@@ -97,7 +95,7 @@ export function ContactForm() {
               type="tel"
               autoComplete="tel-national"
               placeholder="National number (optional)"
-              className="min-h-[44px] min-w-0 flex-1 rounded border border-border px-4 py-2 text-body focus:border-navy focus:outline-none focus:ring-1 focus:ring-navy"
+              className="min-h-[44px] min-w-0 flex-1 rounded-lg border border-stone/70 px-4 py-2 text-muted focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest"
             />
           </div>
         </div>
@@ -110,7 +108,7 @@ export function ContactForm() {
         options={[
           "Claimant solicitor",
           "Defendant solicitor",
-          "In-house counsel",
+          "In-house legal counsel",
           "Insurance / claims professional",
           "Other legal professional",
         ]}
@@ -121,7 +119,7 @@ export function ContactForm() {
         name="context"
         required
         options={[
-          "Personal injury / wrongful death",
+          "Personal injury / fatal accident",
           "Employment / unfair dismissal",
           "Clinical negligence",
           "Commercial / business damages",
@@ -136,18 +134,18 @@ export function ContactForm() {
         options={[
           "Loss of future earnings",
           "Loss of earning capacity",
-          "Present value / discount rate dispute",
+          "Multiplicand / discount rate dispute",
           "Rebuttal of opposing economist",
-          "Wrongful death economic loss",
-          "Front pay / back pay",
+          "Fatal accident dependency loss",
+          "Future loss of earnings (employment)",
           "Other / not sure",
         ]}
       />
 
       <SelectField
-        label="Approximate exposure"
+        label="Approximate claim value"
         name="exposure"
-        options={["Unknown", "Under $250,000", "$250,000 – $1M", "$1M – $5M", "Over $5M"]}
+        options={["Unknown", "Under £250,000", "£250,000 – £1M", "£1M – £5M", "Over £5M"]}
       />
 
       <SelectField
@@ -156,14 +154,14 @@ export function ContactForm() {
         required
         options={[
           "Standard — no imminent deadline",
-          "Discovery deadline within 30 days",
-          "Expert disclosure / trial within 60 days",
+          "Disclosure deadline within 30 days",
+          "Expert report / trial within 60 days",
           "Other urgent",
         ]}
       />
 
       <div>
-        <label htmlFor="message" className="mb-1 block text-sm font-medium text-navy">
+        <label htmlFor="message" className="mb-1 block text-sm font-medium text-forest">
           Brief case description *
         </label>
         <textarea
@@ -171,15 +169,15 @@ export function ContactForm() {
           name="message"
           required
           rows={5}
-          className="w-full min-w-0 rounded border border-border px-4 py-3 text-body focus:border-navy focus:outline-none focus:ring-1 focus:ring-navy"
-          placeholder="Jurisdiction, party side, key dates, and whether an opposing economist report exists."
+          className="w-full min-w-0 rounded-lg border border-stone/70 px-4 py-3 text-muted focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest"
+          placeholder="Jurisdiction (England, Wales, Scotland, or Northern Ireland), party side, key dates, and whether an opposing economist report exists."
         />
       </div>
 
-      <label className="flex items-start gap-3 text-sm text-body">
+      <label className="flex items-start gap-3 text-sm text-muted">
         <input type="checkbox" required className="mt-1 min-h-[16px] min-w-[16px] shrink-0" />
         <span>
-          I understand submitting this form does not create an attorney-client or expert retention
+          I understand submitting this form does not create a solicitor–client or expert instruction
           relationship.
         </span>
       </label>
@@ -187,9 +185,9 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="min-h-[44px] w-full rounded bg-gold px-6 py-3 font-semibold text-white hover:bg-gold-light disabled:opacity-60 sm:w-auto"
+        className="min-h-[44px] w-full rounded-full bg-copper px-6 py-3 font-semibold text-white hover:bg-copper-light disabled:opacity-60 sm:w-auto"
       >
-        {status === "loading" ? "Submitting…" : "Contact Us"}
+        {status === "loading" ? "Submitting…" : "Request an expert"}
       </button>
     </form>
   );
@@ -212,7 +210,7 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={name} className="mb-1 block text-sm font-medium text-navy">
+      <label htmlFor={name} className="mb-1 block text-sm font-medium text-forest">
         {label} {required && "*"}
       </label>
       <input
@@ -221,7 +219,7 @@ function Field({
         type={type}
         required={required}
         autoComplete={autoComplete}
-        className="min-h-[44px] w-full min-w-0 rounded border border-border px-4 py-2 text-body focus:border-navy focus:outline-none focus:ring-1 focus:ring-navy"
+        className="min-h-[44px] w-full min-w-0 rounded-lg border border-stone/70 px-4 py-2 text-muted focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest"
       />
     </div>
   );
@@ -240,7 +238,7 @@ function SelectField({
 }) {
   return (
     <div>
-      <label htmlFor={name} className="mb-1 block text-sm font-medium text-navy">
+      <label htmlFor={name} className="mb-1 block text-sm font-medium text-forest">
         {label} {required && "*"}
       </label>
       <select
@@ -248,7 +246,7 @@ function SelectField({
         name={name}
         required={required}
         defaultValue=""
-        className="min-h-[44px] w-full min-w-0 rounded border border-border px-4 py-2 text-body focus:border-navy focus:outline-none focus:ring-1 focus:ring-navy"
+        className="min-h-[44px] w-full min-w-0 rounded-lg border border-stone/70 px-4 py-2 text-muted focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest"
       >
         <option value="" disabled>
           Select…

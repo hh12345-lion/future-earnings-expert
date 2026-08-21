@@ -13,7 +13,7 @@ export default function EarningsTypesHub() {
     <>
       <PageHero
         title="Types of Future Earnings & Economic Damages"
-        subtitle="Dedicated expert witness support for each major damages category in US litigation."
+        subtitle="Dedicated expert witness support for each major damages category in UK litigation."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Earnings Damages Types" }]}
       />
       <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
@@ -22,10 +22,10 @@ export default function EarningsTypesHub() {
             <Link
               key={p.slug}
               href={`/earnings-damages-types/${p.slug}`}
-              className="rounded-lg border border-border p-6 shadow-sm hover:border-gold hover:shadow-md"
+              className="rounded-lg border border-stone/70 p-6 shadow-sm hover:border-copper hover:shadow-md"
             >
-              <h2 className="text-xl font-semibold text-navy">{p.h1}</h2>
-              <p className="mt-2 text-sm text-body">{p.metaDescription}</p>
+              <h2 className="text-xl font-semibold text-forest">{p.h1}</h2>
+              <p className="mt-2 text-sm text-muted">{p.metaDescription}</p>
             </Link>
           ))}
         </div>

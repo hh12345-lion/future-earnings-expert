@@ -20,44 +20,44 @@ export type RetainContent = StaticPageContent & {
 };
 
 export const howToRetainContent: RetainContent = {
-  metaTitle: "How to Retain a Future Earnings Expert | Attorney Guide",
+  metaTitle: "How to Instruct a Future Earnings Expert | Solicitor Guide",
   metaDescription:
-    "How litigation attorneys retain a forensic economist: intake, records, engagement, report, deposition, and trial. Step-by-step process for plaintiff and defense counsel.",
-  h1: "How to Retain a Future Earnings Expert",
+    "How litigation solicitors retain a forensic economist: intake, records, engagement, report, deposition, and trial. Step-by-step process for claimant and defendant counsel.",
+  h1: "How to Instruct a Future Earnings Expert",
   subtitle:
     "From initial consultation through expert report, deposition, and trial testimony.",
   sections: [
     {
       heading: "Overview",
       paragraphs: [
-        "Retaining a forensic economist through Future Earnings Expert begins with a free consultation to confirm case fit, damages measure, and records availability. Network experts serve plaintiff and defense counsel nationwide in personal injury, wrongful death, employment, medical malpractice, and commercial injury matters.",
+        "Retaining a forensic economist through Future Earnings Expert begins with a free consultation to confirm case fit, damages measure, and records availability. Network experts serve claimant and defendant counsel nationwide in personal injury, fatal accident, employment, medical malpractice, and commercial injury matters.",
         "This page describes the typical retention workflow. Timelines vary by case complexity, discovery schedule, and expert availability.",
       ],
     },
     {
-      heading: "Personal Injury and Wrongful Death Retentions",
+      heading: "Personal Injury and fatal accident Retentions",
       paragraphs: [
         "Confirm whether loss of future earnings, loss of earning capacity, or both apply under your forum and pleadings. Identify whether a vocational expert is needed before the economist finalizes post-event occupational assumptions.",
-        "Provide tax returns, wage records, medical and vocational reports, and opposing expert disclosures as they become available.",
+        "Provide tax returns, wage records, medical and vocational reports, and opposing expert report deadlines as they become available.",
       ],
     },
     {
       heading: "Employment Retentions",
       paragraphs: [
-        "Employment matters require personnel files, compensation history, termination documentation, and mitigation evidence. Specify whether the engagement covers back pay, front pay, benefits, or capacity loss. Clarify whether liability is established or assumed for damages-phase analysis.",
+        "Employment matters require personnel files, compensation history, termination documentation, and mitigation evidence. Specify whether the engagement covers past loss of earnings, future loss of earnings, benefits, or capacity loss. Clarify whether liability is established or assumed for damages-phase analysis.",
       ],
     },
     {
       heading: "Rebuttal Retentions",
       paragraphs: [
-        "When opposing counsel has disclosed an economist, send the opposing report promptly. Rebuttal scope ranges from assumption critique to full alternative model with testimony. Early retention preserves Daubert and discovery response deadlines.",
+        "When opposing counsel has disclosed an economist, send the opposing report promptly. Rebuttal scope ranges from assumption critique to full alternative model with testimony. Early instruction preserves CPR Part 35 (Ikarian Reefer) and discovery response deadlines.",
       ],
     },
     {
       heading: "What to Include in the Letter of Instruction",
       list: [
-        "Party side (plaintiff/defense) and jurisdiction",
-        "Applicable damages measure (earnings, capacity, back pay, front pay)",
+        "Party side (claimant/defense) and jurisdiction",
+        "Applicable damages measure (earnings, capacity, past loss of earnings, future loss of earnings)",
         "Key dates: injury, termination, trial, disclosure deadlines",
         "Specific questions for the expert to address",
         "Collateral source, mitigation, and setoff instructions",
@@ -128,9 +128,9 @@ export const howToRetainContent: RetainContent = {
   ],
   recordsChecklist: [
     "Pleadings and damages discovery requests/responses",
-    "3–5 years pre-event tax returns and W-2s; post-event through current",
+    "3–5 years pre-event tax returns and P60s; post-event through current",
     "Pay stubs, employer verification, or personnel files",
-    "SSA earnings record and SSDI/SSI award letters if applicable",
+    "SSA earnings record and state benefits award letters if applicable",
     "Vocational evaluation and IME reports",
     "Termination and mitigation documents (employment cases)",
     "Opposing expert report (rebuttal cases)",

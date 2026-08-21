@@ -37,16 +37,16 @@ export default function PillarPage() {
           <DataTable key={t.heading} table={t} />
         ))}
         <div className="mt-8 space-y-2 text-sm font-semibold">
-          <Link href="/damages-contexts" className="block text-navy hover:text-gold">
+          <Link href="/damages-contexts" className="block text-forest hover:text-copper">
             Damages contexts →
           </Link>
-          <Link href="/earnings-damages-types" className="block text-navy hover:text-gold">
+          <Link href="/earnings-damages-types" className="block text-forest hover:text-copper">
             Earnings damages types →
           </Link>
-          <Link href="/glossary" className="block text-navy hover:text-gold">
+          <Link href="/glossary" className="block text-forest hover:text-copper">
             Glossary →
           </Link>
-          <Link href="/contact" className="block text-navy hover:text-gold">
+          <Link href="/contact" className="block text-forest hover:text-copper">
             Contact →
           </Link>
         </div>

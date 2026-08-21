@@ -17,7 +17,7 @@ export default function DamagesContextsHub() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Damages Contexts" }]}
       />
       <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
-        <p className="mx-auto mb-12 max-w-3xl text-center text-lg text-body">
+        <p className="mx-auto mb-12 max-w-3xl text-center text-lg text-muted">
           The legal measure of economic loss, available records, and expert report standards differ by case
           type. Select your damages context for methodology, FAQs, and retention guidance.
         </p>
@@ -26,11 +26,11 @@ export default function DamagesContextsHub() {
             <Link
               key={ctx.slug}
               href={`/damages-contexts/${ctx.slug}`}
-              className="rounded-lg border border-border p-6 shadow-sm hover:border-gold hover:shadow-md"
+              className="rounded-lg border border-stone/70 p-6 shadow-sm hover:border-copper hover:shadow-md"
             >
-              <h2 className="text-xl font-semibold text-navy">{ctx.h1}</h2>
-              <p className="mt-3 text-sm text-body">{ctx.subtitle}</p>
-              <span className="mt-4 inline-block text-sm font-semibold text-gold">Read more →</span>
+              <h2 className="text-xl font-semibold text-forest">{ctx.h1}</h2>
+              <p className="mt-3 text-sm text-muted">{ctx.subtitle}</p>
+              <span className="mt-4 inline-block text-sm font-semibold text-copper">Read more →</span>
             </Link>
           ))}
         </div>

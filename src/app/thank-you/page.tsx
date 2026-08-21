@@ -15,17 +15,17 @@ export default function ThankYouPage() {
         subtitle="Your consultation request has been submitted successfully."
       />
       <div className="mx-auto max-w-2xl px-4 py-12 lg:px-8">
-        <div className="rounded-lg border border-border bg-section p-8 text-center">
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gold/15 text-2xl text-gold">
+        <div className="rounded-lg border border-stone/70 bg-cream p-8 text-center">
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-copper/15 text-2xl text-copper">
             ✓
           </div>
-          <p className="text-lg text-body">
+          <p className="text-lg text-muted">
             A member of our team will review your case details and respond within{" "}
             <strong>{siteConfig.responseTime}</strong> during business hours.
           </p>
-          <p className="mt-4 text-sm text-body">
+          <p className="mt-4 text-sm text-muted">
             If your matter is urgent, email{" "}
-            <a href={`mailto:${siteConfig.email}`} className="font-semibold text-navy hover:text-gold">
+            <a href={`mailto:${siteConfig.email}`} className="font-semibold text-forest hover:text-copper">
               {siteConfig.email}
             </a>{" "}
             with your firm name and deadline.
@@ -33,16 +33,16 @@ export default function ThankYouPage() {
         </div>
 
         <div className="mt-10">
-          <h2 className="text-center text-lg font-semibold text-navy">What to prepare</h2>
-          <ul className="mt-4 space-y-2 text-sm text-body">
-            <li>• Pleadings and damages-related discovery</li>
-            <li>• Tax returns and W-2s (pre- and post-event)</li>
-            <li>• Vocational or IME reports, if available</li>
-            <li>• Opposing economist report, if disclosed</li>
+          <h2 className="text-center text-lg font-semibold text-forest">What to prepare</h2>
+          <ul className="mt-4 space-y-2 text-sm text-muted">
+            <li>• Particulars of claim and disclosure relating to damages</li>
+            <li>• Tax returns and P60s (pre- and post-event)</li>
+            <li>• Vocational or medico-legal reports, if available</li>
+            <li>• Opposing economist report, if served</li>
           </ul>
           <p className="mt-4 text-center text-sm">
-            <Link href="/how-to-retain" className="font-semibold text-navy hover:text-gold">
-              Full retention checklist →
+            <Link href="/how-to-retain" className="font-semibold text-forest hover:text-copper">
+              Full instruction checklist →
             </Link>
           </p>
         </div>
@@ -50,13 +50,13 @@ export default function ThankYouPage() {
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Link
             href="/"
-            className="inline-flex min-h-[44px] items-center rounded bg-gold px-6 py-3 font-semibold text-white hover:bg-gold-light"
+            className="inline-flex min-h-[44px] items-center rounded bg-copper px-6 py-3 font-semibold text-white hover:bg-copper-light"
           >
             Return to Homepage
           </Link>
           <Link
             href="/services"
-            className="inline-flex min-h-[44px] items-center rounded border border-border px-6 py-3 font-semibold text-navy hover:bg-section"
+            className="inline-flex min-h-[44px] items-center rounded border border-stone/70 px-6 py-3 font-semibold text-forest hover:bg-cream"
           >
             Browse Services
           </Link>

@@ -56,13 +56,13 @@ export function CookiePreferencesPanel({ onClose, mode }: Props) {
       aria-labelledby="cookie-prefs-title"
       className={
         mode === "modal"
-          ? "cookie-modal-enter mx-4 w-full max-w-lg rounded-xl border border-border bg-white shadow-2xl"
-          : "w-full rounded-xl border border-border bg-white p-6 shadow-sm"
+          ? "cookie-modal-enter mx-4 w-full max-w-lg rounded-xl border border-stone/70 bg-white shadow-2xl"
+          : "w-full rounded-xl border border-stone/70 bg-white p-6 shadow-sm"
       }
     >
       <div className={mode === "modal" ? "p-6" : ""}>
         <div className="flex items-start justify-between gap-4">
-          <h2 id="cookie-prefs-title" className="text-xl font-bold text-navy">
+          <h2 id="cookie-prefs-title" className="text-xl font-bold text-forest">
             Cookie Preferences
           </h2>
           {mode === "modal" && (
@@ -70,27 +70,27 @@ export function CookiePreferencesPanel({ onClose, mode }: Props) {
               type="button"
               onClick={onClose}
               aria-label="Close cookie preferences"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded text-navy/60 hover:bg-section hover:text-navy"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded text-forest/60 hover:bg-cream hover:text-forest"
             >
               ✕
             </button>
           )}
         </div>
-        <p className="mt-2 text-sm text-body">
+        <p className="mt-2 text-sm text-muted">
           Manage how we use cookies. Necessary cookies cannot be disabled.{" "}
-          <Link href="/cookies" className="font-semibold text-gold hover:underline">
+          <Link href="/cookies" className="font-semibold text-copper hover:underline">
             Cookie Policy
           </Link>
         </p>
 
         <ul className="mt-6 space-y-4">
-          <li className="rounded-lg border border-border bg-section p-4">
+          <li className="rounded-lg border border-stone/70 bg-cream p-4">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="font-semibold text-navy">{CATEGORY_META.necessary.label}</p>
-                <p className="mt-1 text-xs text-body">{CATEGORY_META.necessary.description}</p>
+                <p className="font-semibold text-forest">{CATEGORY_META.necessary.label}</p>
+                <p className="mt-1 text-xs text-muted">{CATEGORY_META.necessary.description}</p>
               </div>
-              <span className="shrink-0 rounded bg-navy/10 px-2 py-1 text-xs font-semibold text-navy">
+              <span className="shrink-0 rounded bg-forest/10 px-2 py-1 text-xs font-semibold text-forest">
                 Always on
               </span>
             </div>
@@ -104,17 +104,17 @@ export function CookiePreferencesPanel({ onClose, mode }: Props) {
               cat === "analytics" ? setAnalytics : cat === "marketing" ? setMarketing : setPrefs;
 
             return (
-              <li key={cat} className="rounded-lg border border-border p-4">
+              <li key={cat} className="rounded-lg border border-stone/70 p-4">
                 <label className="flex cursor-pointer items-start justify-between gap-4">
                   <div>
-                    <p className="font-semibold text-navy">{meta.label}</p>
-                    <p className="mt-1 text-xs text-body">{meta.description}</p>
+                    <p className="font-semibold text-forest">{meta.label}</p>
+                    <p className="mt-1 text-xs text-muted">{meta.description}</p>
                   </div>
                   <input
                     type="checkbox"
                     checked={checked}
                     onChange={(e) => setter(e.target.checked)}
-                    className="mt-1 h-5 w-5 shrink-0 accent-gold"
+                    className="mt-1 h-5 w-5 shrink-0 accent-copper"
                     aria-label={`Enable ${meta.label}`}
                   />
                 </label>
@@ -127,7 +127,7 @@ export function CookiePreferencesPanel({ onClose, mode }: Props) {
           <button
             type="button"
             onClick={handleSave}
-            className="min-h-[44px] flex-1 rounded bg-gold px-4 py-2.5 text-sm font-semibold text-white hover:bg-gold-light focus:outline-none focus:ring-2 focus:ring-gold"
+            className="min-h-[44px] flex-1 rounded bg-copper px-4 py-2.5 text-sm font-semibold text-white hover:bg-copper-light focus:outline-none focus:ring-2 focus:ring-copper"
           >
             Save Preferences
           </button>
@@ -137,7 +137,7 @@ export function CookiePreferencesPanel({ onClose, mode }: Props) {
               acceptAll();
               onClose();
             }}
-            className="min-h-[44px] rounded border border-border px-4 py-2.5 text-sm font-semibold text-navy hover:bg-section"
+            className="min-h-[44px] rounded border border-stone/70 px-4 py-2.5 text-sm font-semibold text-forest hover:bg-cream"
           >
             Accept All
           </button>
@@ -147,7 +147,7 @@ export function CookiePreferencesPanel({ onClose, mode }: Props) {
               rejectNonEssential();
               onClose();
             }}
-            className="min-h-[44px] rounded border border-border px-4 py-2.5 text-sm font-semibold text-navy hover:bg-section"
+            className="min-h-[44px] rounded border border-stone/70 px-4 py-2.5 text-sm font-semibold text-forest hover:bg-cream"
           >
             Reject Non-Essential
           </button>
@@ -160,7 +160,7 @@ export function CookiePreferencesPanel({ onClose, mode }: Props) {
 
   return (
     <div
-      className="fixed inset-0 z-[110] flex items-center justify-center bg-navy/60 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-[110] flex items-center justify-center bg-forest/60 p-4 backdrop-blur-sm"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}

@@ -18,37 +18,37 @@ export type PillarContent = {
 export const pillarContent: PillarContent = {
   metaTitle: "How Future Earnings Are Calculated | Complete Guide",
   metaDescription:
-    "Complete guide to calculating future earnings damages in US litigation: baseline, growth, work-life expectancy, fringe benefits, present value, and BLS/OEWS data.",
+    "Complete guide to calculating future earnings damages in UK litigation: baseline, growth, working life expectancy, fringe benefits, capitalised value, and ONS ASHE data.",
   h1: "How Future Earnings Are Calculated in Litigation",
   subtitle:
-    "The complete forensic economics methodology for attorneys—data sources, assumptions, and present value.",
+    "The complete forensic economics methodology for solicitors—data sources, assumptions, and present value.",
   sections: [
     {
       heading: "The Core Principle: But-For vs. Actual",
       paragraphs: [
-        "Future earnings damages rest on a single economic question: what would the plaintiff have earned but for the injury, death, or wrongful conduct, compared to what they actually earn or are expected to earn? The difference, extended over the appropriate work period and adjusted for benefits and present value, is the economic loss.",
-        "Forensic economists in the Future Earnings Expert network apply this principle using verifiable records—not speculative career paths. Every assumption is documented for FRE 702 and Daubert review. This guide explains the methodology; counsel determines the applicable legal measure and forum standards.",
+        "Future earnings damages rest on a single economic question: what would the claimant have earned but for the injury, death, or wrongful conduct, compared to what they actually earn or are expected to earn? The difference, extended over the appropriate work period and adjusted for benefits and present value, is the economic loss.",
+        "Forensic economists in the Future Earnings Expert network apply this principle using verifiable records—not speculative career paths. Every assumption is documented for CPR Part 35 and CPR Part 35 (Ikarian Reefer) review. This guide explains the methodology; solicitors determine the applicable legal measure and forum standards.",
       ],
     },
     {
       heading: "Step 1: Establish the Pre-Event Baseline",
       paragraphs: [
-        "The baseline anchors the analysis in documented fact. Economists review multiple years of tax returns (Form 1040, W-2s, Schedule C for self-employment), pay stubs, employer verification, and SSA earnings records. Single-year snapshots are insufficient when earnings fluctuate.",
+        "The baseline anchors the analysis in documented fact. Economists review multiple years of tax returns (Form 1040, P60s, Schedule C for self-employment), pay stubs, employer verification, and SSA earnings records. Single-year snapshots are insufficient when earnings fluctuate.",
         "Anomalies—signing bonuses, overtime spikes, layoffs, or business losses—require explanation before projecting forward. The baseline may use a multi-year average or the most representative recent year depending on the earnings pattern and counsel's direction.",
       ],
     },
     {
       heading: "Step 2: Project But-For Earnings",
       paragraphs: [
-        "The but-for path projects baseline earnings forward over work-life expectancy with an appropriate wage growth rate. Growth must be justified by the plaintiff's history, occupation, and industry—not by aggressive assumptions designed to maximize damages.",
-        "BLS/OEWS data provides occupational and industry context. If historical growth exceeds occupational norms, the economist explains why; if below, conservative projection may apply. Promotion or career advancement assumptions require factual support from employer records or industry evidence.",
+        "The but-for path projects baseline earnings forward over work-life expectancy with an appropriate wage growth rate. Growth must be justified by the claimant's history, occupation, and industry—not by aggressive assumptions designed to maximize damages.",
+        "ONS ASHE data provides occupational and industry context. If historical growth exceeds occupational norms, the economist explains why; if below, conservative projection may apply. Promotion or career advancement assumptions require factual support from employer records or industry evidence.",
       ],
     },
     {
       heading: "Step 3: Model Post-Event Earnings or Capacity",
       paragraphs: [
-        "Post-event analysis uses actual earnings since the incident when the plaintiff returned to work. When unemployed or working below capacity, vocational expert opinions identify suitable occupations and medical evidence defines restrictions.",
-        "Loss of earning capacity uses BLS/OEWS wages for post-event suitable occupations—not the plaintiff's prior job if they can no longer perform it. Mitigation credits interim earnings and addresses job search reasonableness in employment cases.",
+        "Post-event analysis uses actual earnings since the incident when the claimant returned to work. When unemployed or working below capacity, vocational expert opinions identify suitable occupations and medical evidence defines restrictions.",
+        "Loss of earning capacity uses ONS ASHE wages for post-event suitable occupations—not the claimant's prior job if they can no longer perform it. Mitigation credits interim earnings and addresses job search reasonableness in employment cases.",
       ],
     },
     {
@@ -61,15 +61,15 @@ export const pillarContent: PillarContent = {
     {
       heading: "Step 5: Fringe Benefits",
       paragraphs: [
-        "Employer-paid health insurance, retirement contributions, paid leave, and other benefits represent real economic value. Economists load benefits using employer cost or wage replacement methods as counsel directs.",
-        "Self-employed plaintiffs may use industry load factors or documented self-funded benefit costs. Benefits are added to the annual wage differential before present value discounting, unless forum law treats them separately.",
+        "Employer-paid health insurance, retirement contributions, paid leave, and other benefits represent real economic value. Economists load benefits using employer cost or wage replacement methods as solicitors direct.",
+        "Self-employed claimants may use industry load factors or documented self-funded benefit costs. Benefits are added to the annual wage differential before present value discounting, unless forum law treats them separately.",
       ],
     },
     {
       heading: "Step 6: Present Value Discounting",
       paragraphs: [
         "Future losses are discounted to present value for judgment and settlement. Discount rate selection depends on forum—Treasury-based rates, net discount approaches, and total offset methods are common. Nominal and real treatment must be consistent.",
-        "Sensitivity analysis at alternative rates helps counsel evaluate exposure. Present value errors are among the most common bases for rebuttal and Daubert challenge.",
+        "Sensitivity analysis at alternative rates helps counsel evaluate exposure. Present value errors are among the most common bases for rebuttal and CPR Part 35 (Ikarian Reefer) challenge.",
       ],
     },
     {
@@ -82,7 +82,7 @@ export const pillarContent: PillarContent = {
     {
       heading: "Brand Clarification",
       paragraphs: [
-        "Future Earnings Expert connects litigation attorneys with forensic economists specializing in litigation economic damages. We are not a consumer finance website, cryptocurrency platform, or investment coaching service. Similar domain names exist in unrelated industries; our focus is exclusively expert witness and economic damages support for US litigation.",
+        "Future Earnings Expert connects litigation solicitors with forensic economists specialising in litigation economic damages. We are not a consumer finance website, cryptocurrency platform, or investment coaching service. Similar domain names exist in unrelated industries; our focus is exclusively expert witness and economic damages support for UK litigation.",
       ],
     },
   ],
@@ -93,7 +93,7 @@ export const pillarContent: PillarContent = {
       rows: [
         [
           "Baseline establishment",
-          "Tax returns, W-2s, pay stubs, SSA records",
+          "Tax returns, P60s, pay stubs, SSA records",
           "Verified pre-event annual earnings",
         ],
         [
@@ -123,17 +123,17 @@ export const pillarContent: PillarContent = {
       columns: ["Source", "Use in Analysis", "Notes"],
       rows: [
         [
-          "Plaintiff tax returns (3–5 years)",
+          "claimant tax returns (3–5 years)",
           "Baseline earnings, self-employment income",
           "Gold standard for wage verification",
         ],
         [
-          "W-2s and pay stubs",
+          "P60s and pay stubs",
           "Employer, occupation, benefits detail",
           "Cross-check to tax returns",
         ],
         [
-          "BLS/OEWS",
+          "ONS ASHE",
           "Occupational wage levels for capacity cases",
           "SOC-aligned; geographic adjustments",
         ],
@@ -174,12 +174,12 @@ export const pillarContent: PillarContent = {
           "Career change, unemployment, minimal history, TBI/spinal cases",
         ],
         [
-          "Back pay (employment)",
+          "past loss of earnings (employment)",
           "Compensation lost to date minus mitigation",
           "Wrongful termination; liability or damages phase",
         ],
         [
-          "Front pay (employment)",
+          "future loss of earnings (employment)",
           "Future compensation when no reinstatement",
           "Discrimination/retaliation with ongoing loss",
         ],
@@ -192,7 +192,7 @@ export const pillarContent: PillarContent = {
         [
           "Net discount (nominal)",
           "Nominal discount rate minus nominal wage growth",
-          "Many state and federal courts",
+          "Many courts across England, Wales, Scotland, and Northern Ireland",
         ],
         [
           "Real rate",

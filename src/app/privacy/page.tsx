@@ -10,7 +10,7 @@ export default function PrivacyPage() {
   return (
     <>
       <PageHero title="Privacy Policy" breadcrumbs={[{ label: "Home", href: "/" }, { label: "Privacy" }]} />
-      <div className="mx-auto max-w-3xl space-y-6 px-4 py-12 text-body lg:px-8">
+      <div className="mx-auto max-w-3xl space-y-6 px-4 py-12 text-muted lg:px-8">
         <p>Last updated: June 2026</p>
         <p>
           {siteConfig.name} ({siteConfig.domain}) connects UK litigation solicitors with independent forensic
@@ -18,14 +18,14 @@ export default function PrivacyPage() {
           or submit a consultation request. Our services are limited to the {siteConfig.regionLabel}.
         </p>
         <section>
-          <h2 className="text-xl font-semibold text-navy">Information We Collect</h2>
+          <h2 className="text-xl font-semibold text-forest">Information We Collect</h2>
           <p className="mt-2">
             Contact form submissions (name, firm, email, phone, case details), email correspondence, and
             standard website analytics data (IP address, browser type, pages visited).
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-semibold text-navy">How We Use Information</h2>
+          <h2 className="text-xl font-semibold text-forest">How We Use Information</h2>
           <ul className="mt-2 list-disc pl-6">
             <li>Respond to consultation and expert match requests</li>
             <li>Perform conflicts screening before expert introduction</li>
@@ -34,7 +34,7 @@ export default function PrivacyPage() {
           </ul>
         </section>
         <section>
-          <h2 className="text-xl font-semibold text-navy">Sharing</h2>
+          <h2 className="text-xl font-semibold text-forest">Sharing</h2>
           <p className="mt-2">
             We may share inquiry details with independent experts in our network for case-fit assessment,
             and with service providers (hosting, email, form processing) under confidentiality agreements.
@@ -42,10 +42,10 @@ export default function PrivacyPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-semibold text-navy">Cookies</h2>
+          <h2 className="text-xl font-semibold text-forest">Cookies</h2>
           <p className="mt-2">
             We use cookies and similar technologies as described in our{" "}
-            <a href="/cookies" className="font-semibold text-gold hover:underline">
+            <a href="/cookies" className="font-semibold text-copper hover:underline">
               Cookie Policy
             </a>
             . Non-essential cookies require your consent. Use Cookie Settings in the footer to
@@ -54,7 +54,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-navy">Contact</h2>
+          <h2 className="text-xl font-semibold text-forest">Contact</h2>
           <p className="mt-2">
             {siteConfig.email}
           </p>

@@ -43,7 +43,7 @@ export default async function GuidePage({ params }: Props) {
       <div className="mx-auto max-w-3xl px-4 py-12 lg:px-8">
         <ContentSections sections={page.sections} />
         {page.faqs && <FAQBlock faqs={page.faqs} />}
-        <Link href="/contact" className="mt-8 inline-block font-semibold text-navy hover:text-gold">
+        <Link href="/contact" className="mt-8 inline-block font-semibold text-forest hover:text-copper">
           Schedule a consultation →
         </Link>
       </div>

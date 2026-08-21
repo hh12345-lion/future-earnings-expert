@@ -25,13 +25,13 @@ export const feesContent: FeesContent = {
     "Typical forensic economist fees for litigation: hourly rates, report costs, deposition and trial testimony. No contingency fees. Independent network experts.",
   h1: "Forensic Economist Fees & Expert Witness Costs",
   subtitle:
-    "Transparent fee guidance for litigation attorneys—hourly rates, report costs, and factors affecting total engagement cost.",
+    "Transparent fee guidance for litigation solicitors—hourly rates, report costs, and factors affecting total engagement cost.",
   sections: [
     {
       heading: "How Fees Work in Our Network",
       paragraphs: [
         "Forensic economists in the Future Earnings Expert network are independent professionals who set their own rates and issue engagement letters directly to retaining counsel. Future Earnings Expert does not mark up expert fees or accept contingency arrangements.",
-        "Fees below reflect typical ranges observed in US litigation economic damages engagements as of 2025–2026. Actual quotes depend on case complexity, expert credentials, geographic market, and scope.",
+        "Fees below reflect typical ranges observed in UK litigation economic damages engagements as of 2025–2026. Actual quotes depend on case complexity, expert credentials, geographic market, and scope.",
       ],
     },
     {
@@ -75,9 +75,9 @@ export const feesContent: FeesContent = {
       ],
     },
     {
-      heading: "Plaintiff and Defense Billing",
+      heading: "claimant and defendant Billing",
       paragraphs: [
-        "The same rate structures apply to plaintiff and defense retentions. Fee arrangement does not affect methodology; network experts maintain independence regardless of retaining side.",
+        "The same rate structures apply to claimant and defendant retentions. Fee arrangement does not affect methodology; network experts maintain independence regardless of retaining side.",
       ],
     },
   ],
@@ -112,20 +112,20 @@ export const feesContent: FeesContent = {
     {
       category: "Standard personal injury economic damages report",
       range: "$5,000–$18,000",
-      notes: "Single plaintiff, documented wage history",
+      notes: "Single claimant, documented wage history",
     },
     {
       category: "Catastrophic injury / capacity case with vocational coordination",
       range: "$12,000–$30,000+",
-      notes: "TBI, spinal, pediatric, multi-decade PV",
+      notes: "TBI, spinal, paediatric, multi-decade PV",
     },
     {
-      category: "Wrongful death economic damages report",
+      category: "fatal accident economic damages report",
       range: "$6,000–$20,000",
       notes: "Includes household services coordination if scoped",
     },
     {
-      category: "Employment back pay / front pay report",
+      category: "Employment past loss of earnings / future loss of earnings report",
       range: "$5,000–$15,000",
       notes: "Executive compensation increases cost",
     },

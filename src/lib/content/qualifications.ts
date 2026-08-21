@@ -11,47 +11,47 @@ export type StaticPageContent = {
 export const qualificationsContent: StaticPageContent = {
   metaTitle: "Forensic Economist Qualifications | Expert Credentials",
   metaDescription:
-    "Qualifications for forensic economists in the Future Earnings Expert network: Ph.D., CPA, NAFE, experience, FRE 702 compliance, and red flags for attorneys.",
+    "Qualifications for forensic economists in the Future Earnings Expert network: Ph.D., CPA, NAFE, experience, CPR Part 35 compliance, and red flags for solicitors.",
   h1: "Forensic Economist Qualifications & Credentials",
   subtitle:
-    "What litigation attorneys should expect from a qualified future earnings expert witness.",
+    "What litigation solicitors should expect from a qualified future earnings expert witness.",
   sections: [
     {
       heading: "Core Academic and Professional Credentials",
       paragraphs: [
-        "Forensic economists in the Future Earnings Expert referral network typically hold advanced degrees in economics, finance, or accounting and specialized experience in litigation economic damages—not general accounting or retail financial planning.",
+        "Forensic economists in the Future Earnings Expert referral network typically hold advanced degrees in economics, finance, or accounting and specialised experience in litigation economic damages—not general accounting or retail financial planning.",
       ],
       list: [
         "Ph.D. or Master's in Economics, Labor Economics, or Applied Economics",
         "CPA with Certified in Financial Forensics (CFF) or equivalent forensic credential",
         "Membership in the National Association of Forensic Economics (NAFE) or equivalent professional body",
         "Published methodology or teaching in forensic economics (preferred)",
-        "Documented history of expert reports and testimony in state and federal courts",
+        "Documented history of expert reports and testimony in courts across England, Wales, Scotland, and Northern Ireland",
       ],
     },
     {
       heading: "Specialist Experience Required",
       list: [
         "Loss of future earnings and loss of earning capacity quantification",
-        "Personal injury, wrongful death, employment, and medical malpractice matters",
+        "Personal injury, fatal accident, employment, and medical malpractice matters",
         "Present value discounting and fringe benefits analysis under varying forum standards",
-        "BLS/OEWS occupational data application and work-life expectancy tables",
+        "ONS ASHE occupational data application and work-life expectancy tables",
         "Rebuttal and critique of opposing forensic economist reports",
         "Coordination with vocational experts on capacity cases",
         "Deposition and trial testimony with demonstratives for judges and juries",
       ],
     },
     {
-      heading: "FRE 702 and Daubert Compliance",
+      heading: "CPR Part 35 and CPR Part 35 (Ikarian Reefer) Compliance",
       paragraphs: [
         "Qualified experts document data sources, state assumptions explicitly, and produce reproducible calculations. Reports separate facts, assumptions, and opinions. Methodology aligns with published forensic economics practice and verifiable government data—not outcome-driven advocacy.",
-        "Experts in our network understand gatekeeping standards under Federal Rule of Evidence 702 and state equivalents. They do not guarantee admissibility, which remains the court's determination.",
+        "Experts in our network understand gatekeeping standards under CPR Part 35 and jurisdiction-specific rules. They do not guarantee admissibility, which remains the court's determination.",
       ],
     },
     {
       heading: "Independence and Ethics",
       paragraphs: [
-        "Network experts are independent professionals—not employees of Future Earnings Expert. Each maintains their own engagement letter, fee schedule, and conflicts screening. Experts accept plaintiff and defense matters where no conflict exists.",
+        "Network experts are independent professionals—not employees of Future Earnings Expert. Each maintains their own engagement letter, fee schedule, and conflicts screening. Experts accept claimant and defendant matters where no conflict exists.",
         "Experts do not guarantee damages outcomes or settlement amounts. Opinions follow the evidence and documented methodology.",
       ],
     },
@@ -59,7 +59,7 @@ export const qualificationsContent: StaticPageContent = {
       heading: "Red Flags When Selecting an Economist",
       list: [
         "No documented litigation experience or inability to provide sample report structure",
-        "Methodology not explained or refusal to cite BLS/OEWS and data sources",
+        "Methodology not explained or refusal to cite ONS ASHE and data sources",
         "Guaranteed damages figures or admissibility before reviewing records",
         "Consumer finance, investment advisory, or tax preparation as primary practice",
         "Cannot distinguish loss of future earnings from loss of earning capacity",

@@ -5,7 +5,7 @@ import { getWhatIsContent } from "@/lib/content/what-is";
 export const metadata = {
   title: "What Is a Future Earnings Expert Witness?",
   description:
-    "A future earnings expert witness quantifies loss of future earnings and earning capacity for US litigation. FRE 702 methodology and when to retain explained.",
+    "A future earnings expert witness quantifies loss of future earnings and earning capacity for UK litigation. CPR Part 35 methodology and when to instruct explained.",
 };
 
 export default function WhatIsPage() {
@@ -29,7 +29,7 @@ export default function WhatIsPage() {
             }}
           />
         )}
-        <Link href="/how-to-retain" className="mt-8 inline-block font-semibold text-navy hover:text-gold">
+        <Link href="/how-to-retain" className="mt-8 inline-block font-semibold text-forest hover:text-copper">
           How to retain an expert →
         </Link>
       </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans, Source_Serif_4 } from "next/font/google";
 import { ConsentModeDefaultsScript } from "@/components/cookies/ConsentModeDefaultsScript";
 import { CookieConsentProvider } from "@/components/cookies/CookieConsentProvider";
 import { CookieConsentUI } from "@/components/cookies/CookieConsentUI";
@@ -10,12 +10,18 @@ import { StickyMobileCTA } from "@/components/UI";
 import { SITE_URL, siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const dmSans = DM_Sans({ subsets: ["latin"], display: "swap", variable: "--font-dm-sans" });
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-source-serif",
+  weight: ["400", "600", "700"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Future Earnings Expert Witness | Economic Damages",
+    default: "Future Earnings Expert Witness | Economic Damages (UK)",
     template: "%s | Future Earnings Expert",
   },
   description: siteConfig.description,
@@ -24,13 +30,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-GB">
-      <body className={`${inter.className} flex min-h-screen flex-col`}>
+    <html lang="en-GB" className={`${dmSans.variable} ${sourceSerif.variable}`}>
+      <body className={`${dmSans.className} flex min-h-screen flex-col`}>
         <ConsentModeDefaultsScript />
         <CookieConsentProvider>
           <a
             href="#main"
-            className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-gold focus:p-4"
+            className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-copper focus:p-4 focus:text-white"
           >
             Skip to main content
           </a>

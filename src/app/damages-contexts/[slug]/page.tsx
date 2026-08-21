@@ -49,11 +49,11 @@ export default async function DamagesContextPage({ params }: Props) {
         <ContentSections sections={page.sections} />
         {page.faqs && <FAQBlock faqs={page.faqs} />}
         <p className="mt-8 text-sm">
-          <Link href="/how-future-earnings-are-calculated" className="font-semibold text-navy hover:text-gold">
+          <Link href="/how-future-earnings-are-calculated" className="font-semibold text-forest hover:text-copper">
             How future earnings are calculated →
           </Link>
           {" · "}
-          <Link href="/contact" className="font-semibold text-navy hover:text-gold">
+          <Link href="/contact" className="font-semibold text-forest hover:text-copper">
             Contact →
           </Link>
         </p>

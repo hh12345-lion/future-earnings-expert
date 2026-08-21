@@ -5,7 +5,7 @@ import { glossaryTerms } from "@/lib/content/glossary";
 export const metadata = {
   title: "Future Earnings Expert Witness Glossary",
   description:
-    "Definitions of key forensic economics terms: but-for analysis, earning capacity, present value, FRE 702, work-life expectancy, and more.",
+    "Definitions of key forensic economics terms: but-for analysis, earning capacity, multipliers, CPR Part 35, working life expectancy, and more.",
 };
 
 export default function GlossaryPage() {
@@ -32,13 +32,13 @@ export default function GlossaryPage() {
       <div className="mx-auto max-w-3xl px-4 py-12 lg:px-8">
         <dl className="space-y-6">
           {sorted.map((g) => (
-            <div key={g.term} id={g.term.toLowerCase().replace(/[^a-z0-9]+/g, "-")} className="border-b border-border pb-6">
-              <dt className="text-lg font-semibold text-navy">{g.term}</dt>
-              <dd className="mt-2 text-body">{g.definition}</dd>
+            <div key={g.term} id={g.term.toLowerCase().replace(/[^a-z0-9]+/g, "-")} className="border-b border-stone/70 pb-6">
+              <dt className="text-lg font-semibold text-forest">{g.term}</dt>
+              <dd className="mt-2 text-muted">{g.definition}</dd>
             </div>
           ))}
         </dl>
-        <Link href="/how-future-earnings-are-calculated" className="mt-8 inline-block font-semibold text-navy hover:text-gold">
+        <Link href="/how-future-earnings-are-calculated" className="mt-8 inline-block font-semibold text-forest hover:text-copper">
           How future earnings are calculated →
         </Link>
       </div>

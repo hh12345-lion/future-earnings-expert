@@ -49,10 +49,10 @@ export default async function EarningsTypePage({ params }: Props) {
         <ContentSections sections={page.sections} />
         {page.faqs && <FAQBlock faqs={page.faqs} />}
         <div className="mt-8 flex flex-wrap gap-4 text-sm font-semibold">
-          <Link href="/how-future-earnings-are-calculated" className="text-navy hover:text-gold">
+          <Link href="/how-future-earnings-are-calculated" className="text-forest hover:text-copper">
             How earnings are calculated →
           </Link>
-          <Link href="/contact" className="text-navy hover:text-gold">
+          <Link href="/contact" className="text-forest hover:text-copper">
             Contact →
           </Link>
         </div>
