@@ -37,7 +37,24 @@ export function ContactForm() {
         body: JSON.stringify({
           fullName,
           email,
-          phone,
+          phone: phone || "",
+          formType: "contact",
+        }),
+      });
+
+      const result = (await res.json()) as { success?: boolean; error?: string };
+      if (!res.ok || !result.success) {
+        throw new Error(result.error ?? "submit failed");
+      }
+
+      // Fire-and-forget: full intake details to Google Sheets via /api/instruct
+      void fetch("/api/instruct", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName,
+          email,
+          phone: phone || "",
           organisation: String(data.get("organisation") ?? "").trim(),
           role: String(data.get("role") ?? "").trim(),
           context: String(data.get("context") ?? "").trim(),
@@ -47,11 +64,6 @@ export function ContactForm() {
           message: String(data.get("message") ?? "").trim(),
         }),
       });
-
-      const result = (await res.json()) as { success?: boolean; error?: string };
-      if (!res.ok || !result.success) {
-        throw new Error(result.error ?? "submit failed");
-      }
 
       router.push("/thank-you");
     } catch {

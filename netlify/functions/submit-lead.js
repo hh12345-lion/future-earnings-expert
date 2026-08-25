@@ -2,7 +2,7 @@
  * Netlify serverless function — forwards contact leads to n8n / webhook.
  * Update BRAND_NAME per site.
  *
- * Env: Lead_notification_url or LEAD_NOTIFICATION_URL
+ * Env: Lead_notification_url or LEAD_NOTIFICATION_URL, NEXT_PUBLIC_SITE_URL
  */
 
 const BRAND_NAME = "Future Earnings Expert";
@@ -10,6 +10,18 @@ const BRAND_NAME = "Future Earnings Expert";
 function sanitize(value, maxLength = 500) {
   if (typeof value !== "string") return "";
   return value.replace(/<[^>]*>/g, "").trim().slice(0, maxLength);
+}
+
+function getSiteDomain() {
+  const raw = process.env.NEXT_PUBLIC_SITE_URL || "https://www.futureearningsexpert.com";
+  try {
+    return new URL(raw).hostname.replace(/^www\./i, "");
+  } catch {
+    return raw
+      .replace(/^https?:\/\//i, "")
+      .replace(/^www\./i, "")
+      .split("/")[0];
+  }
 }
 
 exports.handler = async (event) => {
@@ -50,6 +62,7 @@ exports.handler = async (event) => {
     Email: email,
     "Phone Number": phone,
     "Brand name": BRAND_NAME,
+    domain: getSiteDomain(),
   };
 
   try {

@@ -1,18 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { appendRowWithRetry } from "@/lib/google-sheets";
-import { BRAND_NAME, notifyLeadWebhook, type LeadPayload } from "@/lib/lead-notification";
+import { notifyLeadWebhook, type LeadPayload } from "@/lib/lead-notification";
 
 export const runtime = "nodejs";
 
-type SubmitLeadBody = LeadPayload & {
-  organisation?: string;
-  role?: string;
-  context?: string;
-  damagesType?: string;
-  exposure?: string;
-  urgency?: string;
-  message?: string;
-};
+type SubmitLeadBody = LeadPayload;
 
 function sanitize(value: unknown, maxLength = 5000): string {
   if (typeof value !== "string") return "";
@@ -30,6 +21,7 @@ export async function POST(request: NextRequest) {
     const fullName = sanitize(body.fullName, 200);
     const email = sanitize(body.email, 320).toLowerCase();
     const phone = sanitize(body.phone, 40);
+    const formType = body.formType === "instruct" ? "instruct" : "contact";
 
     if (!fullName || !email) {
       return NextResponse.json(
@@ -45,50 +37,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const lead: LeadPayload = { fullName, email, phone };
+    const lead: LeadPayload = { fullName, email, phone, formType };
 
-    // Webhook is optional locally; when configured, treat failures as submission errors.
     const webhookUrl = process.env.Lead_notification_url || process.env.LEAD_NOTIFICATION_URL;
     if (webhookUrl) {
       await notifyLeadWebhook(lead);
-    }
-
-    // Google Sheets is secondary — log failures but do not block the user.
-    const organisation = sanitize(body.organisation, 200);
-    const role = sanitize(body.role, 120);
-    const context = sanitize(body.context, 120);
-    const damagesType = sanitize(body.damagesType, 120);
-    const exposure = sanitize(body.exposure, 80);
-    const urgency = sanitize(body.urgency, 120);
-    const message = sanitize(body.message, 5000);
-
-    if (
-      process.env.GOOGLE_SHEET_ID &&
-      process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL &&
-      process.env.GOOGLE_PRIVATE_KEY
-    ) {
-      try {
-        await appendRowWithRetry([
-          new Date().toISOString(),
-          fullName,
-          organisation,
-          email,
-          phone,
-          role,
-          context,
-          damagesType,
-          exposure,
-          urgency,
-          message,
-          BRAND_NAME,
-        ]);
-      } catch (error) {
-        console.error("Google Sheets write failed:", {
-          message: error instanceof Error ? error.message : "Unknown error",
-          spreadsheetId: `${process.env.GOOGLE_SHEET_ID?.slice(0, 8)}...`,
-          timestamp: new Date().toISOString(),
-        });
-      }
     }
 
     return NextResponse.json({ success: true });

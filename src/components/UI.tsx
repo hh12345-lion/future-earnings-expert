@@ -55,7 +55,7 @@ export function CTASection({
           href="/contact"
           className="inline-flex min-h-[44px] shrink-0 items-center rounded-full bg-copper px-8 py-3 text-sm font-semibold text-white hover:bg-copper-light"
         >
-          Request an expert
+          Instruct expert
         </Link>
       </div>
     </section>
@@ -152,7 +152,7 @@ export function StickyMobileCTA() {
         href="/contact"
         className="flex min-h-[44px] flex-1 items-center justify-center rounded-full bg-copper text-sm font-semibold text-white"
       >
-        Request an expert
+        Instruct expert
       </Link>
     </div>
   );

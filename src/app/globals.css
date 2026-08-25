@@ -32,6 +32,18 @@
   }
 }
 
+@layer utilities {
+  .header-ledger-edge {
+    border-bottom: 2px dashed color-mix(in srgb, var(--color-copper) 45%, transparent);
+  }
+
+  .brand-stamp {
+    box-shadow:
+      inset 0 0 0 1px color-mix(in srgb, var(--color-copper-light) 70%, transparent),
+      inset 0 0 0 3px color-mix(in srgb, var(--color-forest-dark) 40%, transparent);
+  }
+}
+
 /* Cookie banner — slide up without layout shift (fixed positioning) */
 @keyframes cookie-banner-in {
   from {
@@ -55,6 +67,15 @@
   }
 }
 
+@keyframes mobile-drawer-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 .cookie-banner-enter {
   animation: cookie-banner-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -63,9 +84,14 @@
   animation: cookie-modal-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+.mobile-drawer-enter {
+  animation: mobile-drawer-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cookie-banner-enter,
-  .cookie-modal-enter {
+  .cookie-modal-enter,
+  .mobile-drawer-enter {
     animation: none;
   }
 }

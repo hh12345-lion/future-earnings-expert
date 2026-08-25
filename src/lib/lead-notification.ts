@@ -1,3 +1,5 @@
+import { getSiteDomain } from "@/lib/seo";
+
 /** Brand name sent to n8n / webhook integrations — change per site. */
 export const BRAND_NAME = "Future Earnings Expert";
 
@@ -5,6 +7,7 @@ export type LeadPayload = {
   fullName: string;
   email: string;
   phone: string;
+  formType?: "contact" | "instruct";
 };
 
 export type LeadWebhookBody = {
@@ -12,6 +15,7 @@ export type LeadWebhookBody = {
   Email: string;
   "Phone Number": string;
   "Brand name": string;
+  domain: string;
 };
 
 export function getLeadNotificationUrl(): string | undefined {
@@ -24,6 +28,7 @@ export function buildWebhookPayload(lead: LeadPayload): LeadWebhookBody {
     Email: lead.email,
     "Phone Number": lead.phone,
     "Brand name": BRAND_NAME,
+    domain: getSiteDomain(),
   };
 }
 

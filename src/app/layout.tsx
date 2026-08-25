@@ -5,7 +5,6 @@ import { CookieConsentProvider } from "@/components/cookies/CookieConsentProvide
 import { CookieConsentUI } from "@/components/cookies/CookieConsentUI";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { MobileNav } from "@/components/MobileNav";
 import { StickyMobileCTA } from "@/components/UI";
 import { SITE_URL, siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -41,7 +40,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             Skip to main content
           </a>
           <Header />
-          <MobileNav />
           <main id="main" className="flex-1 pb-20 lg:pb-0">
             {children}
           </main>
