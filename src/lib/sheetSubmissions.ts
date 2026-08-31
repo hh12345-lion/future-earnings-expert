@@ -9,7 +9,7 @@ import { BRAND_NAME } from "@/lib/lead-notification";
 /** One shared tab — Form Type distinguishes Contact vs Instruct. */
 function sharedTab(): SheetTarget {
   return {
-    sheetName: process.env.GOOGLE_SHEET_TAB_NAME || "Sheet1",
+    sheetName: (process.env.GOOGLE_SHEET_TAB_NAME || "Sheet1").trim(),
   };
 }
 
@@ -69,14 +69,19 @@ export async function appendInstructToSheet(
   await appendRowWithRetry(buildIntakeRow(data), 2, sharedTab());
 }
 
+/** Soft-fail wrapper. Returns whether a row was written. */
 export async function writeSubmissionToSheetSafely(
   writer: () => Promise<void>,
   context: string
-): Promise<void> {
-  if (!isGoogleSheetsConfigured()) return;
+): Promise<boolean> {
+  if (!isGoogleSheetsConfigured()) {
+    console.warn(`[sheets] not configured — skip (${context})`);
+    return false;
+  }
 
   try {
     await writer();
+    return true;
   } catch (error: unknown) {
     const err = error as {
       message?: string;
@@ -88,9 +93,12 @@ export async function writeSubmissionToSheetSafely(
       message: err?.message,
       code: err?.code,
       status: err?.response?.status,
-      spreadsheetId: `${process.env.GOOGLE_SHEET_ID?.slice(0, 8)}...`,
-      tab: process.env.GOOGLE_SHEET_TAB_NAME,
+      spreadsheetId: process.env.GOOGLE_SHEET_ID
+        ? `${process.env.GOOGLE_SHEET_ID.slice(0, 8)}...`
+        : "missing",
+      tab: (process.env.GOOGLE_SHEET_TAB_NAME || "Sheet1").trim(),
       timestamp: new Date().toISOString(),
     });
+    return false;
   }
 }

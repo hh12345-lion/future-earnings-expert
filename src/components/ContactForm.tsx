@@ -31,43 +31,46 @@ export function ContactForm() {
         : phoneNational;
 
     try {
+      const payload = {
+        fullName,
+        email,
+        phone: phone || "",
+        organisation: String(data.get("organisation") ?? "").trim(),
+        role: String(data.get("role") ?? "").trim(),
+        context: String(data.get("context") ?? "").trim(),
+        damagesType: String(data.get("damages_type") ?? "").trim(),
+        exposure: String(data.get("exposure") ?? "").trim(),
+        urgency: String(data.get("urgency") ?? "").trim(),
+        message: String(data.get("message") ?? "").trim(),
+        formType: "instruct" as const,
+      };
+
       const res = await fetch("/api/submit-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName,
-          email,
-          phone: phone || "",
-          formType: "instruct",
-        }),
+        body: JSON.stringify(payload),
       });
 
-      const result = (await res.json()) as { success?: boolean; error?: string };
+      const result = (await res.json()) as {
+        success?: boolean;
+        error?: string;
+        writtenToSheet?: boolean;
+      };
       if (!res.ok || !result.success) {
         throw new Error(result.error ?? "submit failed");
       }
 
-      // Fire-and-forget: Sheets via /api/instruct (soft-fail). Webhook already
-      // succeeded above via /api/submit-lead (primary).
-      void fetch("/api/instruct", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName,
-          email,
-          phone: phone || "",
-          organisation: String(data.get("organisation") ?? "").trim(),
-          role: String(data.get("role") ?? "").trim(),
-          context: String(data.get("context") ?? "").trim(),
-          damagesType: String(data.get("damages_type") ?? "").trim(),
-          exposure: String(data.get("exposure") ?? "").trim(),
-          urgency: String(data.get("urgency") ?? "").trim(),
-          message: String(data.get("message") ?? "").trim(),
-          formType: "instruct",
-        }),
-      }).catch(() => {
-        console.warn("Instruct sheet write failed; webhook lead was still sent.");
-      });
+      // Soft-await instruct path (email/log); Sheets already handled above.
+      try {
+        await fetch("/api/instruct", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...payload, skipSheet: true }),
+          keepalive: true,
+        });
+      } catch {
+        console.warn("Instruct secondary path failed; submit-lead already succeeded.");
+      }
 
       router.push("/thank-you");
     } catch {

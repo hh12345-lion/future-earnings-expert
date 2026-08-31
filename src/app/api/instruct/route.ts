@@ -19,6 +19,7 @@ type InstructBody = {
   urgency?: string;
   message?: string;
   formType?: string;
+  skipSheet?: boolean;
 };
 
 function sanitize(value: unknown, maxLength = 5000): string {
@@ -46,6 +47,7 @@ export async function POST(request: NextRequest) {
     const urgency = sanitize(body.urgency, 120);
     const message = sanitize(body.message, 5000);
     const formType = body.formType === "contact" ? "contact" : "instruct";
+    const skipSheet = body.skipSheet === true;
 
     if (!fullName || !email) {
       return NextResponse.json(
@@ -69,10 +71,12 @@ export async function POST(request: NextRequest) {
     };
 
     // Soft-fail Sheets — never 500 because Sheets failed
-    await writeSubmissionToSheetSafely(
-      () => appendInstructToSheet(payload),
-      "instruct"
-    );
+    const writtenToSheet = skipSheet
+      ? false
+      : await writeSubmissionToSheetSafely(
+          () => appendInstructToSheet(payload),
+          "instruct"
+        );
 
     // Soft-fail email: no Resend on this site — log for ops, never fail the request
     console.log("Instruct submission received:", {
@@ -80,9 +84,10 @@ export async function POST(request: NextRequest) {
       email,
       formType: formType === "contact" ? "Contact" : "Instruct",
       notify: siteConfig.email,
+      writtenToSheet,
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, writtenToSheet });
   } catch (error) {
     console.error("Instruct submission error:", error);
     // Soft-fail: never block thank-you / webhook after a valid attempt

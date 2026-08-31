@@ -4,13 +4,14 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Proxy /api/submit-lead to the Netlify function when using `netlify dev`
-# without the Next.js plugin, or as a fallback for static deployments.
-[[redirects]]
-  from = "/api/submit-lead"
-  to = "/.netlify/functions/submit-lead"
-  status = 200
-  force = false
+# submit-lead handled by src/app/api/submit-lead/route.ts (soft webhook + Sheets).
+# Redirect to the Netlify function hard-failed when Lead_notification_url was
+# missing (live 500 blocked the contact form).
+# [[redirects]]
+#   from = "/api/submit-lead"
+#   to = "/.netlify/functions/submit-lead"
+#   status = 200
+#   force = false
 
 [functions]
   directory = "netlify/functions"
