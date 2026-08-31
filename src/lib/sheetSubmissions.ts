@@ -1,0 +1,96 @@
+import {
+  appendRowWithRetry,
+  isGoogleSheetsConfigured,
+  type CellValue,
+  type SheetTarget,
+} from "@/lib/google-sheets";
+import { BRAND_NAME } from "@/lib/lead-notification";
+
+/** One shared tab — Form Type distinguishes Contact vs Instruct. */
+function sharedTab(): SheetTarget {
+  return {
+    sheetName: process.env.GOOGLE_SHEET_TAB_NAME || "Sheet1",
+  };
+}
+
+/** Prevent Sheets from treating +44… as a formula when using USER_ENTERED. */
+function formatPhoneForSheet(phone: string): string {
+  if (!phone) return "";
+  if (phone.startsWith("+") || phone.startsWith("=") || phone.startsWith("-")) {
+    return `'${phone}`;
+  }
+  return phone;
+}
+
+export type IntakeSheetPayload = {
+  fullName: string;
+  email: string;
+  phone: string;
+  organisation: string;
+  role: string;
+  context: string;
+  damagesType: string;
+  exposure: string;
+  urgency: string;
+  message: string;
+  formType?: "contact" | "instruct";
+};
+
+/**
+ * Expected header row (shared GOOGLE_SHEET_TAB_NAME):
+ * Timestamp | Brand | Form Type | Full Name | Email | Phone | Organisation | Role |
+ * Damages Context | Damages Type | Exposure | Urgency | Message
+ */
+function buildIntakeRow(data: IntakeSheetPayload): CellValue[] {
+  const formTypeLabel =
+    data.formType === "contact" ? "Contact" : "Instruct";
+
+  return [
+    new Date().toISOString(),
+    BRAND_NAME,
+    formTypeLabel,
+    data.fullName,
+    data.email,
+    formatPhoneForSheet(data.phone),
+    data.organisation,
+    data.role,
+    data.context,
+    data.damagesType,
+    data.exposure,
+    data.urgency,
+    data.message,
+  ];
+}
+
+export async function appendInstructToSheet(
+  data: IntakeSheetPayload
+): Promise<void> {
+  if (!isGoogleSheetsConfigured()) return;
+  await appendRowWithRetry(buildIntakeRow(data), 2, sharedTab());
+}
+
+export async function writeSubmissionToSheetSafely(
+  writer: () => Promise<void>,
+  context: string
+): Promise<void> {
+  if (!isGoogleSheetsConfigured()) return;
+
+  try {
+    await writer();
+  } catch (error: unknown) {
+    const err = error as {
+      message?: string;
+      code?: number;
+      response?: { status?: number };
+    };
+    console.error("Google Sheets error:", {
+      context,
+      message: err?.message,
+      code: err?.code,
+      status: err?.response?.status,
+      spreadsheetId: `${process.env.GOOGLE_SHEET_ID?.slice(0, 8)}...`,
+      tab: process.env.GOOGLE_SHEET_TAB_NAME,
+      timestamp: new Date().toISOString(),
+    });
+  }
+}

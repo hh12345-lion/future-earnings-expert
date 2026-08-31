@@ -32,7 +32,10 @@ export function buildWebhookPayload(lead: LeadPayload): LeadWebhookBody {
   };
 }
 
-/** POST lead data to the configured n8n / webhook URL. */
+/**
+ * POST lead data to the configured n8n / webhook URL.
+ * Webhook is the primary lead path — callers should treat failure as hard.
+ */
 export async function notifyLeadWebhook(lead: LeadPayload): Promise<void> {
   const url = getLeadNotificationUrl();
   if (!url) return;

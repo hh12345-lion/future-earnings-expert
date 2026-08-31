@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { appendRowWithRetry } from "@/lib/google-sheets";
-import { BRAND_NAME } from "@/lib/lead-notification";
+import {
+  appendInstructToSheet,
+  writeSubmissionToSheetSafely,
+} from "@/lib/sheetSubmissions";
+import { siteConfig } from "@/lib/site-config";
 
 export const runtime = "nodejs";
 
@@ -15,6 +18,7 @@ type InstructBody = {
   exposure?: string;
   urgency?: string;
   message?: string;
+  formType?: string;
 };
 
 function sanitize(value: unknown, maxLength = 5000): string {
@@ -22,6 +26,11 @@ function sanitize(value: unknown, maxLength = 5000): string {
   return value.replace(/<[^>]*>/g, "").trim().slice(0, maxLength);
 }
 
+/**
+ * Instruct intake: soft-fail Sheets (shared GOOGLE_SHEET_TAB_NAME + Form Type)
+ * and soft-fail email. Always succeeds after validation so the client can
+ * treat /api/submit-lead as the primary webhook path.
+ */
 export async function POST(request: NextRequest) {
   try {
     const body = (await request.json()) as InstructBody;
@@ -36,6 +45,7 @@ export async function POST(request: NextRequest) {
     const exposure = sanitize(body.exposure, 80);
     const urgency = sanitize(body.urgency, 120);
     const message = sanitize(body.message, 5000);
+    const formType = body.formType === "contact" ? "contact" : "instruct";
 
     if (!fullName || !email) {
       return NextResponse.json(
@@ -44,35 +54,38 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (
-      !process.env.GOOGLE_SHEET_ID ||
-      !process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ||
-      !process.env.GOOGLE_PRIVATE_KEY
-    ) {
-      return NextResponse.json({ success: true, skipped: true });
-    }
-
-    await appendRowWithRetry([
-      new Date().toISOString(),
+    const payload = {
       fullName,
-      organisation,
       email,
       phone,
+      organisation,
       role,
       context,
       damagesType,
       exposure,
       urgency,
       message,
-      BRAND_NAME,
-    ]);
+      formType,
+    };
+
+    // Soft-fail Sheets — never 500 because Sheets failed
+    await writeSubmissionToSheetSafely(
+      () => appendInstructToSheet(payload),
+      "instruct"
+    );
+
+    // Soft-fail email: no Resend on this site — log for ops, never fail the request
+    console.log("Instruct submission received:", {
+      fullName,
+      email,
+      formType: formType === "contact" ? "Contact" : "Instruct",
+      notify: siteConfig.email,
+    });
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Instruct submission error:", error);
-    return NextResponse.json(
-      { success: false, error: "Unable to save intake details." },
-      { status: 500 }
-    );
+    // Soft-fail: never block thank-you / webhook after a valid attempt
+    return NextResponse.json({ success: true });
   }
 }

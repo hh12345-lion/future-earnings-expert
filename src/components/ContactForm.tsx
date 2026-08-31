@@ -38,7 +38,7 @@ export function ContactForm() {
           fullName,
           email,
           phone: phone || "",
-          formType: "contact",
+          formType: "instruct",
         }),
       });
 
@@ -47,7 +47,8 @@ export function ContactForm() {
         throw new Error(result.error ?? "submit failed");
       }
 
-      // Fire-and-forget: full intake details to Google Sheets via /api/instruct
+      // Fire-and-forget: Sheets via /api/instruct (soft-fail). Webhook already
+      // succeeded above via /api/submit-lead (primary).
       void fetch("/api/instruct", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -62,7 +63,10 @@ export function ContactForm() {
           exposure: String(data.get("exposure") ?? "").trim(),
           urgency: String(data.get("urgency") ?? "").trim(),
           message: String(data.get("message") ?? "").trim(),
+          formType: "instruct",
         }),
+      }).catch(() => {
+        console.warn("Instruct sheet write failed; webhook lead was still sent.");
       });
 
       router.push("/thank-you");

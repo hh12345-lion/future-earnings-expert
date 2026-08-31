@@ -1,15 +1,23 @@
 import { google, sheets_v4 } from "googleapis";
 
-type CellValue = string | number | boolean | null;
+export type CellValue = string | number | boolean | null;
 
-interface SheetTarget {
+export interface SheetTarget {
   spreadsheetId?: string;
   sheetName?: string;
 }
 
-interface AppendResult {
+export interface AppendResult {
   success: boolean;
   updatedRange: string | null | undefined;
+}
+
+export function isGoogleSheetsConfigured(): boolean {
+  return Boolean(
+    process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL &&
+      process.env.GOOGLE_PRIVATE_KEY &&
+      process.env.GOOGLE_SHEET_ID
+  );
 }
 
 function getAuthClient() {
@@ -33,6 +41,7 @@ export async function appendRow(
 ): Promise<AppendResult> {
   const sheets = getSheetsClient();
   const spreadsheetId = target?.spreadsheetId || process.env.GOOGLE_SHEET_ID;
+  // One shared tab — Form Type column distinguishes Contact vs Instruct rows
   const sheetName = target?.sheetName || process.env.GOOGLE_SHEET_TAB_NAME || "Sheet1";
 
   if (!spreadsheetId) {

@@ -3,6 +3,10 @@ import { notifyLeadWebhook, type LeadPayload } from "@/lib/lead-notification";
 
 export const runtime = "nodejs";
 
+/**
+ * Webhook-only lead path. Sheets are written by /api/instruct
+ * (shared GOOGLE_SHEET_TAB_NAME + Form Type) so we do not double-append here.
+ */
 type SubmitLeadBody = LeadPayload;
 
 function sanitize(value: unknown, maxLength = 5000): string {
@@ -39,6 +43,8 @@ export async function POST(request: NextRequest) {
 
     const lead: LeadPayload = { fullName, email, phone, formType };
 
+    // Webhook is primary. Sheets are written by /api/instruct (shared tab +
+    // Form Type) so we do not append here.
     const webhookUrl = process.env.Lead_notification_url || process.env.LEAD_NOTIFICATION_URL;
     if (webhookUrl) {
       await notifyLeadWebhook(lead);
