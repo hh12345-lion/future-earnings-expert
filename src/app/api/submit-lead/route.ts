@@ -32,7 +32,8 @@ export async function POST(request: NextRequest) {
     const fullName = sanitize(body.fullName, 200);
     const email = sanitize(body.email, 320).toLowerCase();
     const phone = sanitize(body.phone, 40);
-    const formType = body.formType === "contact" ? "contact" : "instruct";
+    const formType: "contact" | "instruct" =
+      body.formType === "contact" ? "contact" : "instruct";
     const skipSheet = body.skipSheet === true;
 
     if (!fullName || !email) {

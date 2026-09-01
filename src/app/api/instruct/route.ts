@@ -46,7 +46,8 @@ export async function POST(request: NextRequest) {
     const exposure = sanitize(body.exposure, 80);
     const urgency = sanitize(body.urgency, 120);
     const message = sanitize(body.message, 5000);
-    const formType = body.formType === "contact" ? "contact" : "instruct";
+    const formType: "contact" | "instruct" =
+      body.formType === "contact" ? "contact" : "instruct";
     const skipSheet = body.skipSheet === true;
 
     if (!fullName || !email) {
@@ -56,7 +57,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const payload = {
+    const payload: {
+      fullName: string;
+      email: string;
+      phone: string;
+      organisation: string;
+      role: string;
+      context: string;
+      damagesType: string;
+      exposure: string;
+      urgency: string;
+      message: string;
+      formType: "contact" | "instruct";
+    } = {
       fullName,
       email,
       phone,
