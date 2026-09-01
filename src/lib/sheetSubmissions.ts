@@ -1,5 +1,6 @@
 import {
   appendRowWithRetry,
+  DEFAULT_SHEET_TAB_NAME,
   isGoogleSheetsConfigured,
   type CellValue,
   type SheetTarget,
@@ -9,7 +10,7 @@ import { BRAND_NAME } from "@/lib/lead-notification";
 /** One shared tab — Form Type distinguishes Contact vs Instruct. */
 function sharedTab(): SheetTarget {
   return {
-    sheetName: (process.env.GOOGLE_SHEET_TAB_NAME || "Sheet1").trim(),
+    sheetName: (process.env.GOOGLE_SHEET_TAB_NAME || DEFAULT_SHEET_TAB_NAME).trim(),
   };
 }
 
@@ -96,7 +97,7 @@ export async function writeSubmissionToSheetSafely(
       spreadsheetId: process.env.GOOGLE_SHEET_ID
         ? `${process.env.GOOGLE_SHEET_ID.slice(0, 8)}...`
         : "missing",
-      tab: (process.env.GOOGLE_SHEET_TAB_NAME || "Sheet1").trim(),
+      tab: (process.env.GOOGLE_SHEET_TAB_NAME || DEFAULT_SHEET_TAB_NAME).trim(),
       timestamp: new Date().toISOString(),
     });
     return false;
