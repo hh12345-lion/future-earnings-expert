@@ -9,7 +9,9 @@ import { earningsTypes } from "../content/earnings-types";
 import { guides } from "../content/guides";
 import { services } from "../content/services";
 
-export const CANONICAL_HOST = "https://www.futureearningsexpert.com";
+import { SITE_URL } from "../site-config";
+
+export const CANONICAL_HOST = SITE_URL;
 
 /** Static marketing pages (pathname only, leading slash). */
 export const APP_STATIC_PATHS: string[] = [

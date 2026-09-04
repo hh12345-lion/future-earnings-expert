@@ -44,7 +44,7 @@ function sanitize(value, maxLength = 500) {
 
 function getSiteDomain() {
   const raw =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.futureearningsexpert.com";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://futureearningsexpert.com";
   try {
     return new URL(raw).hostname.replace(/^www\./i, "");
   } catch {
