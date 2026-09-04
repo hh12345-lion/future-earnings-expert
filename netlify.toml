@@ -7,7 +7,15 @@
 # submit-lead handled by src/app/api/submit-lead/route.ts (soft webhook + Sheets).
 # Redirect to the Netlify function hard-failed when Lead_notification_url was
 # missing (live 500 blocked the contact form).
-# [[redirects]]
+# # AHREFS_WWW_APEX_REDIRECT — flatten https://www → apex (reduces Ahrefs redirect-chain)
+[[redirects]]
+  from = "/*"
+  to = "https://futureearningsexpert.com/:splat"
+  status = 301
+  force = true
+  conditions = {Host = ["www.futureearningsexpert.com"]}
+
+[[redirects]]
 #   from = "/api/submit-lead"
 #   to = "/.netlify/functions/submit-lead"
 #   status = 200
