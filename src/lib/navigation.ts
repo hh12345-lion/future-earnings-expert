@@ -74,6 +74,7 @@ export const mainNav: NavEntry[] = [
       href: "/guides",
       items: [
         { href: "/guides", label: "Guides" },
+        { href: "/what-is-a-future-earnings-expert", label: "What is a future earnings expert?" },
         { href: "/how-to-retain", label: "How to Instruct" },
         { href: "/qualifications", label: "Qualifications" },
         { href: "/glossary", label: "Glossary" },

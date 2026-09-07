@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ContentSections, CTASection, FAQBlock, JsonLd, PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { getGuideBySlug, guides } from "@/lib/content/guides";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -13,7 +14,11 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const page = getGuideBySlug(slug);
   if (!page) return {};
-  return { title: page.metaTitle, description: page.metaDescription };
+  return createPageMetadata({
+    title: page.metaTitle,
+    description: page.metaDescription,
+    path: `/guides/${slug}`,
+  });
 }
 
 export default async function GuidePage({ params }: Props) {
@@ -29,6 +34,20 @@ export default async function GuidePage({ params }: Props) {
           "@type": "Article",
           headline: page.h1,
           description: page.metaDescription,
+          url: `https://futureearningsexpert.com/guides/${page.slug}`,
+          image: "https://futureearningsexpert.com/opengraph-image",
+          author: {
+            "@type": "Organization",
+            name: "Future Earnings Expert",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "Future Earnings Expert",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://futureearningsexpert.com/opengraph-image",
+            },
+          },
         }}
       />
       <PageHero
@@ -43,6 +62,26 @@ export default async function GuidePage({ params }: Props) {
       <div className="mx-auto max-w-3xl px-4 py-12 lg:px-8">
         <ContentSections sections={page.sections} />
         {page.faqs && <FAQBlock faqs={page.faqs} />}
+        {page.relatedSlugs && page.relatedSlugs.length > 0 ? (
+          <aside className="mt-10 rounded-xl border border-stone/70 bg-cream p-5">
+            <h2 className="text-lg font-semibold text-forest">Related guides</h2>
+            <ul className="mt-3 space-y-2">
+              {page.relatedSlugs
+                .map((relatedSlug) => getGuideBySlug(relatedSlug))
+                .filter(Boolean)
+                .map((related) => (
+                  <li key={related!.slug}>
+                    <Link
+                      href={`/guides/${related!.slug}`}
+                      className="font-semibold text-copper hover:text-copper-light"
+                    >
+                      {related!.h1} →
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </aside>
+        ) : null}
         <Link href="/contact" className="mt-8 inline-block font-semibold text-forest hover:text-copper">
           Schedule a consultation →
         </Link>

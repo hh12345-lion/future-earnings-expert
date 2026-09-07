@@ -13,6 +13,12 @@ const jurisdictions = [
 
 const resourceLinks = [
   { href: "/guides", label: "Guides for solicitors" },
+  { href: "/what-is-a-future-earnings-expert", label: "What is a future earnings expert?" },
+  { href: "/guides/when-to-retain-forensic-economist", label: "When to retain an economist" },
+  { href: "/guides/earning-capacity-vs-future-earnings-guide", label: "Capacity vs future earnings" },
+  { href: "/guides/coordinating-vocational-economic-experts", label: "Vocational & economic experts" },
+  { href: "/guides/daubert-fre702-economic-expert", label: "Expert evidence standards" },
+  { href: "/guides/household-services-wrongful-death-guide", label: "Household services guide" },
   { href: "/how-to-retain", label: "How to instruct" },
   { href: "/qualifications", label: "Qualifications" },
   { href: "/glossary", label: "Glossary" },

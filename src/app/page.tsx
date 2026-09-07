@@ -3,13 +3,15 @@ import { CTASection, JsonLd } from "@/components/UI";
 import { damagesContexts } from "@/lib/content/damages-contexts";
 import { services } from "@/lib/content/services";
 import { guides } from "@/lib/content/guides";
+import { createPageMetadata } from "@/lib/seo";
 import { SITE_URL, siteConfig } from "@/lib/site-config";
 
-export const metadata = {
-  title: "Future Earnings Expert Witness | Quantifying Economic Damages (UK)",
+export const metadata = createPageMetadata({
+  title: "Future Earnings Expert Witness | UK",
   description:
-    "Find a qualified future earnings expert witness in the UK. Forensic economists quantifying loss of future earnings, earning capacity, and economic damages for solicitors and counsel across England, Wales, Scotland, and Northern Ireland.",
-};
+    "UK forensic economists for loss of future earnings, earning capacity, and economic damages — referrals for solicitors across England, Wales, Scotland, and NI.",
+  path: "/",
+});
 
 const stats = [
   {
@@ -48,11 +50,6 @@ export default function HomePage() {
         "@id": `${SITE_URL}/#website`,
         url: SITE_URL,
         name: siteConfig.name,
-        potentialAction: {
-          "@type": "SearchAction",
-          target: `${SITE_URL}/glossary?q={search_term_string}`,
-          "query-input": "required name=search_term_string",
-        },
       },
       {
         "@type": "Organization",
@@ -60,22 +57,17 @@ export default function HomePage() {
         name: siteConfig.name,
         url: SITE_URL,
         email: siteConfig.email,
+        logo: {
+          "@type": "ImageObject",
+          url: `${SITE_URL}/opengraph-image`,
+          width: 1200,
+          height: 630,
+        },
         areaServed: {
           "@type": "Country",
           name: "United Kingdom",
         },
         description: siteConfig.description,
-      },
-      {
-        "@type": "ProfessionalService",
-        "@id": `${SITE_URL}/#service`,
-        name: "Future Earnings Expert Witness Services",
-        provider: { "@id": `${SITE_URL}/#organization` },
-        areaServed: {
-          "@type": "Country",
-          name: "United Kingdom",
-        },
-        serviceType: "Forensic Economics Expert Witness",
       },
     ],
   };
@@ -142,7 +134,7 @@ export default function HomePage() {
             <strong className="text-forest">Note for solicitors:</strong> economic damages often exceed special
             damages in high-value injury and fatal accident claims. Precision in future earnings quantification
             is essential to Part 36 strategy and trial preparation.{" "}
-            <Link href="/guides/future-earnings-vs-earning-capacity-guide" className="font-semibold text-copper hover:text-copper-light">
+            <Link href="/guides/earning-capacity-vs-future-earnings-guide" className="font-semibold text-copper hover:text-copper-light">
               Read the capacity vs earnings guide →
             </Link>
           </p>
@@ -232,8 +224,8 @@ export default function HomePage() {
       <section className="border-t border-stone/50 bg-cream px-4 py-16 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <h2 className="text-2xl md:text-3xl">Guides for solicitors</h2>
-          <div className="mt-8 grid gap-5 lg:grid-cols-3">
-            {guides.slice(0, 3).map((g) => (
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {guides.map((g) => (
               <Link
                 key={g.slug}
                 href={`/guides/${g.slug}`}

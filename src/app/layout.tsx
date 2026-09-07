@@ -6,6 +6,7 @@ import { CookieConsentUI } from "@/components/cookies/CookieConsentUI";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { StickyMobileCTA } from "@/components/UI";
+import { absoluteUrl, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { SITE_URL, siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -20,11 +21,16 @@ const sourceSerif = Source_Serif_4({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Future Earnings Expert Witness | Economic Damages (UK)",
+    default: "Future Earnings Expert Witness | UK",
     template: "%s | Future Earnings Expert",
   },
   description: siteConfig.description,
-  openGraph: { type: "website", locale: "en_GB", siteName: siteConfig.name },
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    siteName: siteConfig.name,
+    images: [{ url: absoluteUrl(DEFAULT_OG_IMAGE), alt: siteConfig.name, width: 1200, height: 630 }],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

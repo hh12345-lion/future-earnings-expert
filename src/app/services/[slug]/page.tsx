@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ContentSections, CTASection, DataTable, FAQBlock, JsonLd, PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { getServiceFaqs } from "@/lib/content/service-faqs";
 import { getServiceBySlug, services } from "@/lib/content/services";
 import type { PillarTable } from "@/lib/content/pillar";
@@ -15,7 +16,11 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const s = getServiceBySlug(slug);
   if (!s) return {};
-  return { title: s.metaTitle, description: s.metaDescription };
+  return createPageMetadata({
+    title: s.metaTitle,
+    description: s.metaDescription,
+    path: `/services/${slug}`,
+  });
 }
 
 export default async function ServicePage({ params }: Props) {

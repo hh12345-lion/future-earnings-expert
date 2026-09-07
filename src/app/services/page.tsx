@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { CTASection, DataTable, PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { services } from "@/lib/content/services";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Future Earnings Expert Witness Services",
   description:
     "Full service list: future earnings, earning capacity, PI, employment, malpractice, expert testimony, rebuttal, and present value analysis.",
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

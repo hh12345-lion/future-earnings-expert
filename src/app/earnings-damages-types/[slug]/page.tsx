@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ContentSections, CTASection, FAQBlock, JsonLd, PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { getEarningsTypeBySlug, earningsTypes } from "@/lib/content/earnings-types";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -13,7 +14,11 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const page = getEarningsTypeBySlug(slug);
   if (!page) return {};
-  return { title: page.metaTitle, description: page.metaDescription };
+  return createPageMetadata({
+    title: page.metaTitle,
+    description: page.metaDescription,
+    path: `/earnings-damages-types/${slug}`,
+  });
 }
 
 export default async function EarningsTypePage({ params }: Props) {

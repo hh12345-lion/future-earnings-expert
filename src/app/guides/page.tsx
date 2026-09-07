@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { CTASection, PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { guides } from "@/lib/content/guides";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Guides: Future Earnings Expert Witnesses",
   description:
     "In-depth guides for UK litigation solicitors on future earnings, earning capacity, multipliers, CPR Part 35, and vocational coordination.",
-};
+  path: "/guides",
+});
 
 export default function GuidesHub() {
   return (

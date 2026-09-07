@@ -1,11 +1,15 @@
 import Link from "next/link";
 import { PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Terms of Use",
-  robots: { index: false, follow: true },
-};
+  description:
+    "Terms of use for the Future Earnings Expert website and expert witness referral service for UK litigation solicitors.",
+  path: "/terms",
+  noIndex: true,
+});
 
 export default function TermsPage() {
   return (

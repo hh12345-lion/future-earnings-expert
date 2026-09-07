@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { CTASection, PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { caseTypes } from "@/lib/content/case-types";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Case Types Requiring a Future Earnings Expert Witness",
   description:
     "Which UK cases need a forensic economist? Personal injury, fatal accident, employment, clinical negligence, employers' liability crossover, and CPR Part 35 proceedings.",
-};
+  path: "/case-types",
+});
 
 export default function CaseTypesHub() {
   return (

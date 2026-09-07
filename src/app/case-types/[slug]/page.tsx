@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ContentSections, CTASection, FAQBlock, JsonLd, PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { getCaseTypeBySlug, caseTypes } from "@/lib/content/case-types";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -13,7 +14,11 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const page = getCaseTypeBySlug(slug);
   if (!page) return {};
-  return { title: page.metaTitle, description: page.metaDescription };
+  return createPageMetadata({
+    title: page.metaTitle,
+    description: page.metaDescription,
+    path: `/case-types/${slug}`,
+  });
 }
 
 export default async function CaseTypePage({ params }: Props) {

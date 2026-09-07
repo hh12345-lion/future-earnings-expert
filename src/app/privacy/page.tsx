@@ -1,10 +1,14 @@
 import { PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Privacy Policy",
-  robots: { index: false, follow: true },
-};
+  description:
+    "How Future Earnings Expert handles personal data, cookies, and confidentiality for UK litigation expert witness enquiries.",
+  path: "/privacy",
+  noIndex: true,
+});
 
 export default function PrivacyPage() {
   return (

@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { CTASection, PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { damagesContexts } from "@/lib/content/damages-contexts";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Damages Contexts | Future Earnings Expert Witness",
   description:
     "Future earnings and economic damages are quantified differently in personal injury, employment, and malpractice contexts. Methodology explained for litigation attorneys.",
-};
+  path: "/damages-contexts",
+});
 
 export default function DamagesContextsHub() {
   return (

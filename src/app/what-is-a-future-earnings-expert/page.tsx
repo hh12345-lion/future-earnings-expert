@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { ContentSections, CTASection, DataTable, PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { getWhatIsContent } from "@/lib/content/what-is";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "What Is a Future Earnings Expert Witness?",
   description:
     "A future earnings expert witness quantifies loss of future earnings and earning capacity for UK litigation. CPR Part 35 methodology and when to instruct explained.",
-};
+  path: "/what-is-a-future-earnings-expert",
+});
 
 export default function WhatIsPage() {
   const content = getWhatIsContent();

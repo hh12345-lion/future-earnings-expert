@@ -1,12 +1,15 @@
 import { ContactForm } from "@/components/ContactForm";
 import { PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Contact us",
   description:
     "Submit your UK case details to be matched with a qualified forensic economist for future earnings and economic damages expert witness services in England, Wales, Scotland, and Northern Ireland.",
-};
+  path: "/contact",
+  noIndex: true,
+});
 
 export default function ContactPage() {
   return (

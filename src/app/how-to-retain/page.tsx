@@ -1,10 +1,12 @@
 import { ContentSections, CTASection, PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { getHowToRetainContent } from "@/lib/content/how-to-retain";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "How to Instruct a Future Earnings Expert",
   description: getHowToRetainContent().metaDescription,
-};
+  path: "/how-to-retain",
+});
 
 export default function HowToRetainPage() {
   const content = getHowToRetainContent();

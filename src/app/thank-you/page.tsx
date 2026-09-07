@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { CTASection, PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Thank You",
-  robots: { index: false, follow: false },
-};
+  description: "Your consultation request has been submitted successfully.",
+  path: "/thank-you",
+  noIndex: true,
+});
 
 export default function ThankYouPage() {
   return (

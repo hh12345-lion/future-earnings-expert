@@ -1,14 +1,16 @@
 import Link from "next/link";
 import { PageHero } from "@/components/UI";
 import { CATEGORY_META } from "@/lib/cookies/types";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Cookie Policy",
   description:
     "How Future Earnings Expert uses cookies and similar technologies. GDPR and ePrivacy compliant cookie information.",
-  robots: { index: true, follow: true },
-};
+  path: "/cookies",
+  noIndex: true,
+});
 
 export default function CookiePolicyPage() {
   return (

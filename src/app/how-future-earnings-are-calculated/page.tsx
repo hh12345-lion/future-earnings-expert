@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { ContentSections, CTASection, DataTable, JsonLd, PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { getPillarContent } from "@/lib/content/pillar";
 import { SITE_URL } from "@/lib/site-config";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "How Future Earnings Are Calculated in Litigation",
   description:
     "Complete guide to calculating future earnings damages: baseline, growth, work-life, fringe benefits, present value, and BLS/OEWS methodology.",
-};
+  path: "/how-future-earnings-are-calculated",
+});
 
 export default function PillarPage() {
   const content = getPillarContent();

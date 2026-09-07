@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { CTASection, PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { earningsTypes } from "@/lib/content/earnings-types";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Types of Future Earnings & Economic Damages",
   description:
     "Types of economic damages requiring expert quantification: future earnings, earning capacity, present value, fringe benefits, wrongful death, employment, and rebuttal.",
-};
+  path: "/earnings-damages-types",
+});
 
 export default function EarningsTypesHub() {
   return (

@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { CTASection, JsonLd, PageHero } from "@/components/UI";
+import { createPageMetadata } from "@/lib/seo";
 import { glossaryTerms } from "@/lib/content/glossary";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Future Earnings Expert Witness Glossary",
   description:
     "Definitions of key forensic economics terms: but-for analysis, earning capacity, multipliers, CPR Part 35, working life expectancy, and more.",
-};
+  path: "/glossary",
+});
 
 export default function GlossaryPage() {
   const sorted = [...glossaryTerms].sort((a, b) => a.term.localeCompare(b.term));
