@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CookieSettingsLink } from "@/components/cookies/CookieSettingsLink";
+import { PreferredSourceButton } from "@/components/PreferredSourceButton";
 import { damagesContexts } from "@/lib/content/damages-contexts";
 import { services } from "@/lib/content/services";
 import { siteConfig } from "@/lib/site-config";
@@ -133,7 +134,7 @@ export function Footer() {
       <div className="border-t border-stone/70 bg-white px-4 py-4 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-xs text-muted sm:flex-row">
           <p>© {new Date().getFullYear()} {siteConfig.name}</p>
-          <p className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
             <Link href="/privacy" className="hover:text-forest">
               Privacy
             </Link>
@@ -144,7 +145,8 @@ export function Footer() {
               Terms
             </Link>
             <CookieSettingsLink className="text-muted hover:text-forest" />
-          </p>
+            <PreferredSourceButton theme="light" />
+          </div>
         </div>
       </div>
     </footer>
