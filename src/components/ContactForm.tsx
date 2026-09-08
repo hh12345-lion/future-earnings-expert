@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { siteConfig } from "@/lib/site-config";
+import { submitNetlifyForm } from "@/lib/submitNetlifyForm";
 
 const PHONE_COUNTRY_CODES = [
   { label: "UK +44", value: "+44" },
@@ -72,6 +73,23 @@ export function ContactForm() {
         console.warn("Instruct secondary path failed; submit-lead already succeeded.");
       }
 
+      try {
+        await submitNetlifyForm("contact", {
+          name: fullName,
+          organisation: String(data.get("organisation") ?? "").trim(),
+          email,
+          phone: phone || undefined,
+          role: String(data.get("role") ?? "").trim(),
+          context: String(data.get("context") ?? "").trim(),
+          damages_type: String(data.get("damages_type") ?? "").trim(),
+          exposure: String(data.get("exposure") ?? "").trim(),
+          urgency: String(data.get("urgency") ?? "").trim(),
+          message: String(data.get("message") ?? "").trim(),
+        });
+      } catch {
+        // Webhook/Sheets already stored the enquiry; don't block the visitor.
+      }
+
       router.push("/thank-you");
     } catch {
       setStatus("error");
@@ -79,7 +97,13 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form name="contact" method="POST" action="/__forms.html" onSubmit={handleSubmit} className="space-y-5">
+      <input type="hidden" name="form-name" value="contact" />
+      <p className="hidden" aria-hidden="true">
+        <label>
+          Do not fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+        </label>
+      </p>
       {status === "error" && (
         <p className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800">
           Submission failed. Please email{" "}

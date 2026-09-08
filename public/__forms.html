@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Form detection</title>
+  </head>
+  <body>
+    <!-- Static blueprint for Netlify form detection. Not linked in the UI. -->
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
+      <input type="text" name="name" />
+      <input type="text" name="organisation" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <select name="role">
+        <option value="Claimant solicitor">Claimant solicitor</option>
+        <option value="Defendant solicitor">Defendant solicitor</option>
+        <option value="In-house legal counsel">In-house legal counsel</option>
+        <option value="Insurance / claims professional">Insurance / claims professional</option>
+        <option value="Other legal professional">Other legal professional</option>
+      </select>
+      <select name="context">
+        <option value="Personal injury / fatal accident">Personal injury / fatal accident</option>
+        <option value="Employment / unfair dismissal">Employment / unfair dismissal</option>
+        <option value="Clinical negligence">Clinical negligence</option>
+        <option value="Commercial / business damages">Commercial / business damages</option>
+        <option value="Multiple / not sure">Multiple / not sure</option>
+      </select>
+      <select name="damages_type">
+        <option value="Loss of future earnings">Loss of future earnings</option>
+        <option value="Loss of earning capacity">Loss of earning capacity</option>
+        <option value="Multiplicand / discount rate dispute">Multiplicand / discount rate dispute</option>
+        <option value="Rebuttal of opposing economist">Rebuttal of opposing economist</option>
+        <option value="Fatal accident dependency loss">Fatal accident dependency loss</option>
+        <option value="Future loss of earnings (employment)">Future loss of earnings (employment)</option>
+        <option value="Other / not sure">Other / not sure</option>
+      </select>
+      <select name="exposure">
+        <option value="Unknown">Unknown</option>
+        <option value="Under £250,000">Under £250,000</option>
+        <option value="£250,000 – £1M">£250,000 – £1M</option>
+        <option value="£1M – £5M">£1M – £5M</option>
+        <option value="Over £5M">Over £5M</option>
+      </select>
+      <select name="urgency">
+        <option value="Standard — no imminent deadline">Standard — no imminent deadline</option>
+        <option value="Disclosure deadline within 30 days">Disclosure deadline within 30 days</option>
+        <option value="Expert report / trial within 60 days">Expert report / trial within 60 days</option>
+        <option value="Other urgent">Other urgent</option>
+      </select>
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>
