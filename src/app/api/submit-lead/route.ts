@@ -50,7 +50,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const lead: LeadPayload = { fullName, email, phone, formType };
+    const lead: LeadPayload = {
+      fullName,
+      email,
+      phone,
+      formType,
+      message: sanitize(body.message, 5000),
+    };
     let forwarded = false;
 
     if (getLeadNotificationUrl()) {
