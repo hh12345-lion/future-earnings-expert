@@ -100,6 +100,7 @@ async function appendLeadToSheet(payload) {
   const spreadsheetId = normalizeSpreadsheetId(process.env.GOOGLE_SHEET_ID);
   const sheetName = resolveSheetTabName();
   const phone = sanitize(payload.phone, 40);
+  const message = resolveLeadMessage(body);
   const phoneCell =
     phone.startsWith("+") || phone.startsWith("=") || phone.startsWith("-")
       ? `'${phone}`
@@ -132,6 +133,32 @@ async function appendLeadToSheet(payload) {
   });
 
   return true;
+}
+
+/** Map site-specific free-text field names to universal `message`. */
+function resolveLeadMessage(body) {
+  if (!body || typeof body !== "object") return "";
+  const keys = [
+    "message",
+    "Message",
+    "description",
+    "enquiry",
+    "details",
+    "summary",
+    "notes",
+    "matter",
+    "caseSummary",
+    "additionalInfo",
+    "additional_info",
+    "caseDetails",
+    "enquiryDetails",
+  ];
+  for (const key of keys) {
+    if (body[key] != null && String(body[key]).trim()) {
+      return String(body[key]).trim();
+    }
+  }
+  return "";
 }
 
 exports.handler = async (event) => {
@@ -177,6 +204,7 @@ exports.handler = async (event) => {
         "Phone Number": phone,
         "Brand name": BRAND_NAME,
         domain: getSiteDomain(),
+    message,
       };
       const response = await fetch(webhookUrl, {
         method: "POST",
