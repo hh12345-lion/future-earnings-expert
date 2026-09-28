@@ -3,6 +3,7 @@
  * Update APP_STATIC_PATHS when adding new static routes.
  */
 
+import { getBlogSlugs } from "../blog";
 import { caseTypes } from "../content/case-types";
 import { damagesContexts } from "../content/damages-contexts";
 import { earningsTypes } from "../content/earnings-types";
@@ -25,6 +26,7 @@ export const APP_STATIC_PATHS: string[] = [
   "/qualifications",
   "/how-to-retain",
   "/guides",
+  "/blog",
   "/glossary",
   "/cookies",
 ];
@@ -53,6 +55,7 @@ export function buildPublicUrlInventory(): PublicUrlInventory {
     ...slugPaths("/earnings-damages-types", earningsTypes.map((t) => t.slug)),
     ...slugPaths("/case-types", caseTypes.map((c) => c.slug)),
     ...slugPaths("/guides", guides.map((g) => g.slug)),
+    ...slugPaths("/blog", getBlogSlugs()),
   ];
 
   const combined = [...APP_STATIC_PATHS, ...dynamicPaths];
@@ -76,15 +79,18 @@ export function getSitemapPriority(path: string): number {
   if (path.startsWith("/case-types")) return path === "/case-types" ? 0.9 : 0.88;
   if (path.startsWith("/services/")) return 0.9;
   if (path.startsWith("/guides/")) return 0.8;
+  if (path.startsWith("/blog/")) return 0.82;
   if (path === "/what-is-a-future-earnings-expert") return 0.9;
   if (path === "/qualifications" || path === "/how-to-retain") return 0.88;
   if (path === "/guides") return 0.87;
+  if (path === "/blog") return 0.87;
   if (path === "/glossary") return 0.75;
   return 0.8;
 }
 
 export function getSitemapChangefreq(path: string): string {
   if (path === "/") return "weekly";
+  if (path === "/blog" || path.startsWith("/blog/")) return "weekly";
   if (path.startsWith("/guides")) return "monthly";
   return "monthly";
 }

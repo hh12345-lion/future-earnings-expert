@@ -74,6 +74,7 @@ export const mainNav: NavEntry[] = [
       href: "/guides",
       items: [
         { href: "/guides", label: "Guides" },
+        { href: "/blog", label: "Blog" },
         { href: "/what-is-a-future-earnings-expert", label: "What is a future earnings expert?" },
         { href: "/how-to-retain", label: "How to Instruct" },
         { href: "/qualifications", label: "Qualifications" },
@@ -116,6 +117,7 @@ export const mobileNavGroups = [
     label: "Resources",
     links: [
       { href: "/guides", label: "Guides" },
+      { href: "/blog", label: "Blog" },
       ...guides.map((g) => ({ href: `/guides/${g.slug}`, label: g.h1 })),
       { href: "/how-to-retain", label: "How to Instruct" },
       { href: "/qualifications", label: "Qualifications" },

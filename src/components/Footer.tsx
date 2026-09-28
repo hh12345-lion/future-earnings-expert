@@ -14,6 +14,7 @@ const jurisdictions = [
 
 const resourceLinks = [
   { href: "/guides", label: "Guides for solicitors" },
+  { href: "/blog", label: "Blog" },
   { href: "/what-is-a-future-earnings-expert", label: "What is a future earnings expert?" },
   { href: "/guides/when-to-retain-forensic-economist", label: "When to retain an economist" },
   { href: "/guides/earning-capacity-vs-future-earnings-guide", label: "Capacity vs future earnings" },
